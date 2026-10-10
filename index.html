@@ -42,6 +42,8 @@ main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
 .b.cat{color:var(--bg);font-weight:700;border:none}
 .b.tba{color:#fbbf24;border-color:#fbbf24}
 .b.free{color:var(--mint,#7cf5c8);border-color:var(--mint,#7cf5c8)}
+.b.mid{color:#fbbf24;border-color:#fbbf24}
+.b.high{color:#f9a8d4;border-color:#f9a8d4}
 .b.perm{color:var(--lav,#c4b5fd);border-color:var(--lav,#c4b5fd)}
 .meta{font-size:.78rem;color:var(--dim);line-height:1.5}
 .meta b{color:var(--txt);font-weight:600}
@@ -87,6 +89,7 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
 <footer>
   Dernière mise à jour : <b id="upd"></b><br>
   ✅ confirmé officiellement · ⚠️ à confirmer · ♾️ permanent (toute la période)<br>
+  💰 € pas cher · €€ prix moyen · €€€ plus cher<br>
   Fait avec 💜 pour la recherche du bien-être
 </footer>
 <div id="toast"></div>
@@ -246,6 +249,25 @@ function gcal(e){const st=pd(e.d);const en=e.d2?pd(e.d2):new Date(st.getTime()+8
  const f=x=>x.toISOString().slice(0,10).replace(/-/g,"");
  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.n)+"&dates="+f(st)+"/"+f(en)+"&location="+encodeURIComponent(e.loc||"Belgique")+"&details="+encodeURIComponent((e.desc||"")+" — "+(e.url||""))}
 function soon(e){const s=pd(e.d);const diff=(s-TODAY)/864e5;return diff>=-1&&diff<=7}
+const PL_TABLE=[
+ ["holotropic",3],["tantra essence",3],["edenya",3],["christmas time — pairi daiza",3],
+ ["candlelight",2],["met opera",2],["casse-noisette",2],["pathé live",2],["christmas garden",2],
+ ["de grote schijn",2],["dino nights",2],["luminate",2],["winter glow",2],["bokrijk",2],["grottes de han",2],
+ ["valkenburg",2],["grevenmacher",2],["vlindorado",2],["eki vibre",2],["monthly reset",2],["holosomatic",2],
+ ["bain de forêt",2],["yaima",2],["the wanderer",2],["sound healing by the pool",2],["wecandoo",2],
+ ["soirées chandelles",2],["mondorf",2],["bains de gongs",2],["journée de pratique",2],["artcade",2],
+ ["viva frida kahlo",2],["beautifica",2],["notre conscience immortelle",2],["pavlof",2],["stage cohérence",2],
+ ["jardin des papillons",2]
+];
+function priceLevel(e){
+ if(e.pl)return e.pl;
+ if(e.price){const p=e.price.toLowerCase();
+  if(p.includes("gratuit")||p.includes("libre"))return 1;
+  const m=p.match(/\d+/);if(m){const v=parseInt(m[0]);return v<=8?1:(v<=60?2:3)}}
+ const k=e.n.toLowerCase();
+ for(const[s,l]of PL_TABLE){if(k.includes(s))return l}
+ return 1;
+}
 function render(){
  const list=$("#list");list.innerHTML="";
  const all=E.filter(e=>{
@@ -260,9 +282,11 @@ function render(){
  if(!ongoing.length&&!future.length){list.innerHTML='<div class="empty">Aucun événement pour ce filtre 🌙</div>';return}
  function card(e){
   const c=CATS[e.cat];
+  const lvl=priceLevel(e);
   const el=document.createElement("div");el.className="card";el.style.setProperty("--accent",c.c);
   const badges='<span class="b cat" style="background:'+c.c+'">'+c.i+" "+c.l+'</span>'+
    (e.price?'<span class="b'+(e.price==="GRATUIT"?" free":"")+'">'+e.price+'</span>':'')+
+   (lvl?'<span class="b '+(lvl===1?"free":lvl===2?"mid":"high")+'" title="Fourchette de prix : '+(lvl===1?"pas cher":lvl===2?"prix moyen":"plus cher")+'">💰 '+'€'.repeat(lvl)+'</span>':'')+
    (e.status==="tba"?'<span class="b tba">⚠️ à confirmer</span>':'')+
    (e.perm?'<span class="b perm">♾️ permanent</span>':'')+
    (e.border?'<span class="b">🌍 frontière</span>':'')+
