@@ -69,9 +69,9 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
   <div class="chips" id="chips"></div>
   <div class="months" id="months">
     <button data-m="10">Octobre</button>
-    <button data-m="11" class="on">Novembre</button>
+    <button data-m="11">Novembre</button>
     <button data-m="12">Décembre</button>
-    <button data-m="all">Tout</button>
+    <button data-m="all" class="on">Tout</button>
   </div>
 </header>
 <main>
@@ -210,6 +210,10 @@ const E=[
 {n:"♾️ Soirées Chandelles — Thermes de Spa",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",t:"17:00-22:00",loc:"Spa",url:"https://www.thermesdespa.com",perm:1,status:"tba",desc:"Bains immersifs à la lueur des chandelles dès la tombée de la nuit — dates des soirées de décembre publiées sur le site."},
 {n:"♾️ Mondorf Domaine Thermal 🇱🇺",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",loc:"Mondorf-les-Bains (Luxembourg)",url:"https://www.mondorf.lu",perm:1,border:1,desc:"Grand domaine bien-être (thermes, sauna, jardins) — offre spéciale valable du 1ᵉʳ oct au 31 déc 2026."},
 {n:"♾️ Ateliers artisans & dégustations — Wecandoo",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles & grandes villes",url:"https://wecandoo.be",perm:1,desc:"Réserve un atelier chez un artisan : chocolat, poterie, parfum, dégustation de vins (~45 €+) — cadeau parfait entre 40 et 50 ans qui aiment la vie !"},
+{n:"🦋 Papillons en liberté — Observatoire du Monde des Plantes",cat:"nature",d:"2026-07-04",d2:"2026-10-25",t:"mar-dim 10:00-17:00",loc:"Liège — Cointe",price:"14 €",url:"https://www.musees.uliege.be",status:"tba",star:1,desc:"Des centaines de papillons tropicaux en liberté dans la serre (avec le musée Hexapoda). FIN IMMINENTE : les sources varient entre le 18 et le 27 octobre — foncez avant la fin !"},
+{n:"ANIMALS — bestiaire contemplatif",cat:"nature",d:"2026-10-17",d2:"2026-12-13",t:"11:00-18:00",loc:"Liège",url:"https://agenda.lesoir.be",desc:"Exposition bestiaire inspirée des Animal Books de Lous Martens. Prolongée du 16 déc au 30 janv 2027 (fermée 24-25 & 31 déc)."},
+{n:"♾️ Aquarium-Muséum de Liège",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"mar-ven 9h-17h · wd 10h-18h",loc:"Liège",url:"https://www.365.be",perm:1,desc:"46 aquariums : Grande Barrière, Amazonie, récifs… Gratuit le 1ᵉʳ dimanche du mois (sur réservation). Musée de zoologie en travaux jusqu'à fin 2027."},
+{n:"♾️ Plant Palace — serres tropicales de Meise",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Meise — Jardin botanique national",price:"~15 €",url:"https://www.plantentuinmeise.be",perm:1,desc:"10 000 espèces tropicales : orchidées, palmiers, cactus. La bulle chaude parfaite contre le gris de l'hiver."},
 // ===== RANDOS 7-25 KM (toute la période) =====
 {n:"♾️ Rando : Vallon du Ninglinspo",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7-12 km",loc:"Aywaille (Ardenne)",url:"https://www.gael.be",perm:1,desc:"Le seul « torrent » de Belgique : ruisseaux, cascades, rochers. Itinéraires détaillés sur Gael.be."},
 {n:"♾️ Rando : la Hoëgne",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7,5-14 km",loc:"Jalhay / Cokaifagne (Hautes Fagnes)",url:"https://visitwallonia.be",perm:1,desc:"Ruisseau romantique et sauvage né dans les fagnes, ponts de rondins, fagne de Malchamps. Fiche balade sur VisitWallonia."},
@@ -225,40 +229,59 @@ const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
 const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
 const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
-let fCat="all", fMonth="11", fSoon=false;
+let fCat="all", fMonth="all", fSoon=false;
+const TODAY=new Date(); TODAY.setHours(0,0,0,0);
+const endOf=e=>pd(e.d2||e.d);
+const isOngoing=e=>pd(e.d)<=TODAY&&TODAY<=endOf(e);
 function gcal(e){const st=pd(e.d);const en=e.d2?pd(e.d2):new Date(st.getTime()+864e5);
  const f=x=>x.toISOString().slice(0,10).replace(/-/g,"");
  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.n)+"&dates="+f(st)+"/"+f(en)+"&location="+encodeURIComponent(e.loc||"Belgique")+"&details="+encodeURIComponent((e.desc||"")+" — "+(e.url||""))}
-function soon(e){const today=new Date(2026,9,10);const s=pd(e.d);const diff=(s-today)/864e5;return diff>=0&&diff<=7}
+function soon(e){const s=pd(e.d);const diff=(s-TODAY)/864e5;return diff>=-1&&diff<=7}
 function render(){
  const list=$("#list");list.innerHTML="";
- const evs=E.filter(e=>{
+ const all=E.filter(e=>{
   if(fCat!=="all"&&e.cat!==fCat)return false;
-  if(fMonth!=="all"&&pd(e.d).getMonth()+1!=+fMonth)return false;
-  if(fSoon&&!soon(e))return false;return true;
- }).sort((a,b)=>a.d.localeCompare(b.d)||a.n.localeCompare(b.n));
- if(!evs.length){list.innerHTML='<div class="empty">Aucun événement pour ce filtre 🌙</div>';return}
- let last="";
- evs.forEach(e=>{
+  if(fMonth!=="all"){const mS=new Date(2026,+fMonth-1,1),mE=new Date(2026,+fMonth,0);
+   if(pd(e.d)>mE||endOf(e)<mS)return false;}
+  if(fSoon&&!soon(e))return false;
+  return true;
+ });
+ const ongoing=all.filter(isOngoing).sort((a,b)=>endOf(a)-endOf(b)||a.n.localeCompare(b.n));
+ const future=all.filter(e=>!isOngoing(e)).sort((a,b)=>a.d.localeCompare(b.d)||a.n.localeCompare(b.n));
+ if(!ongoing.length&&!future.length){list.innerHTML='<div class="empty">Aucun événement pour ce filtre 🌙</div>';return}
+ function card(e){
   const c=CATS[e.cat];
-  if(e.d!==last){last=e.d;
-   const h=document.createElement("div");h.className="dayhead";
-   h.innerHTML='<span class="d">'+short(e.d)+'</span><span class="w">'+(e.perm?"en continu · "+fmt(e.d):fmt(e.d)+(e.d2?' → '+short(e.d2):''))+'</span>';
-   list.appendChild(h);}
-  const card=document.createElement("div");card.className="card";card.style.setProperty("--accent",c.c);
+  const el=document.createElement("div");el.className="card";el.style.setProperty("--accent",c.c);
   const badges='<span class="b cat" style="background:'+c.c+'">'+c.i+" "+c.l+'</span>'+
    (e.price?'<span class="b'+(e.price==="GRATUIT"?" free":"")+'">'+e.price+'</span>':'')+
    (e.status==="tba"?'<span class="b tba">⚠️ à confirmer</span>':'')+
    (e.perm?'<span class="b perm">♾️ permanent</span>':'')+
-   (e.border?'<span class="b">🌍 frontière</span>':'');
-  card.innerHTML='<h3>'+e.n+(e.star?' <span class="star">⭐</span>':'')+'</h3>'+
+   (e.border?'<span class="b">🌍 frontière</span>':'')+
+   (isOngoing(e)&&endOf(e)>TODAY?'<span class="b free">jusqu\'au '+short(endOf(e).toISOString().slice(0,10))+'</span>':'');
+  el.innerHTML='<h3>'+e.n+(e.star?' <span class="star">⭐</span>':'')+'</h3>'+
    '<div class="badges">'+badges+'</div>'+
    '<div class="meta">📍 <b>'+(e.loc||"")+'</b>'+(e.t?' · 🕒 '+e.t:'')+
    (e.desc?'<br>'+e.desc:'')+'</div>'+
    '<div class="cardrow">'+
    (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">ℹ️ Infos & réservation</a>':'')+
    '<a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">📅 Mon agenda</a></div>';
-  list.appendChild(card);
+  return el;
+ }
+ if(ongoing.length){
+  const h=document.createElement("div");h.className="dayhead";
+  h.innerHTML='<span class="d">♾️</span><span class="w">en ce moment — les événements passés disparaissent automatiquement</span>';
+  list.appendChild(h);
+  ongoing.forEach(e=>list.appendChild(card(e)));
+ }
+ let last="";
+ future.forEach(e=>{
+  const c=CATS[e.cat];
+  if(e.d!==last){last=e.d;
+   const h=document.createElement("div");h.className="dayhead";
+   const isToday=pd(e.d).getTime()===TODAY.getTime();
+   h.innerHTML='<span class="d">'+(isToday?"⭐":short(e.d))+'</span><span class="w">'+(isToday?"aujourd'hui":fmt(e.d)+(e.d2?' → '+short(e.d2):''))+'</span>';
+   list.appendChild(h);}
+  list.appendChild(card(e));
  });
 }
 const chips=[["all","Tout"],["lumiere","💡 Lumière"],["immersif","🎭 Immersif"],["bienetre","🧘 Bien-être"],["bouddhisme","☸️ Bouddhisme"],["salon","🛍️ Salons"],["esprit","🧠 Esprit & Sciences"],["spectacle","🎪 Spectacles"],["nature","🌿 Nature & Rando"],["cinema","🎬 Cinéma & Opéra"]];
