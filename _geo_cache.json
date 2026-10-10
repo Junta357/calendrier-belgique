@@ -1,0 +1,482 @@
+{
+ "Floreffe — Moulin-Brasserie de l'Abbaye": {
+  "lat": "50.4366874",
+  "lon": "4.7600394",
+  "label": "Floreffe, Namur, Wallonie",
+  "level": "venue"
+ },
+ "Namur — Arsenal": {
+  "lat": "50.4641625",
+  "lon": "4.8587945",
+  "label": "Haute Ecole Namuroise Catholique - Département social de Namur, 10, Rue de l'Arsenal",
+  "level": "venue"
+ },
+ "Anvers (Deurne) — Parc Rivierenhof": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Beaumont — Kagyu Samye Ling Belgium": {
+  "lat": "50.2355294",
+  "lon": "4.2383115",
+  "label": "Beaumont, Thuin, Hainaut",
+  "level": "venue"
+ },
+ "Anvers — Cornelissenlaan 1": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Anvers": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Bruxelles": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Viroinval": {
+  "lat": "50.0516361",
+  "lon": "4.6270287",
+  "label": "Viroinval, Philippeville, Namur",
+  "level": "venue"
+ },
+ "Leuven": {
+  "lat": "50.8792020",
+  "lon": "4.7011675",
+  "label": "Leuven, Vlaams-Brabant, Vlaanderen",
+  "level": "venue"
+ },
+ "Sud de Bruxelles, près de La Hulpe": {
+  "lat": "50.8794506",
+  "lon": "4.3451174",
+  "label": "Justice de paix de Bruxelles - Vredegerecht Brussel, Rue Fransman - Fransmanstraat, Laeken - Laken",
+  "level": "venue"
+ },
+ "Gand": {
+  "lat": "51.0538286",
+  "lon": "3.7250121",
+  "label": "Gent, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Bruxelles — Atlantis ASBL": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Eindhoven (Pays-Bas)": {
+  "lat": "51.4392648",
+  "lon": "5.4786330",
+  "label": "Eindhoven, Noord-Brabant, Nederland",
+  "level": "venue"
+ },
+ "Ittre — Centre culturel": {
+  "lat": "50.6501961",
+  "lon": "4.2637077",
+  "label": "Ittre, Nivelles, Brabant wallon",
+  "level": "venue"
+ },
+ "Anvers — Massage Exchange Lounge": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Valkenburg (Pays-Bas)": {
+  "lat": "50.8647531",
+  "lon": "5.8312518",
+  "label": "Valkenburg, Valkenburg aan de Geul, Limburg",
+  "level": "venue"
+ },
+ "Belgique — Anne-Marie Flamand": {
+  "lat": "50.8881586",
+  "lon": "4.4595723",
+  "label": "Carrefour Belgium, Da Vincilaan, Zaventem",
+  "level": "venue"
+ },
+ "Bruxelles — Ixelles (Emergences)": {
+  "lat": "50.8381995",
+  "lon": "4.3736537",
+  "label": "Bruxelles-Luxembourg - Brussel-Luxemburg, Esplanade Solidarność 1980, Quartier Léopold - Leopoldswijk",
+  "level": "venue"
+ },
+ "Bruges — centre historique": {
+  "lat": "51.2085526",
+  "lon": "3.2267720",
+  "label": "Brugge, West-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Durbuy": {
+  "lat": "50.3647758",
+  "lon": "5.5108928",
+  "label": "Durbuy, Marche-en-Famenne, Luxembourg",
+  "level": "venue"
+ },
+ "Malmedy": {
+  "lat": "50.4265348",
+  "lon": "6.0276059",
+  "label": "Malmedy, Verviers, Liège",
+  "level": "venue"
+ },
+ "Hasselt — Kolonel Dusartplein": {
+  "lat": "50.9314794",
+  "lon": "5.3435710",
+  "label": "Markt Hasselt, Kolonel Dusartplein, Katarina",
+  "level": "venue"
+ },
+ "Sint-Niklaas — domaine De Ster": {
+  "lat": "51.1686993",
+  "lon": "4.1019296",
+  "label": "Sint-Niklaas, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Diest — domaine Halve Maan": {
+  "lat": "50.9844318",
+  "lon": "5.0504341",
+  "label": "Diest, Leuven, Vlaams-Brabant",
+  "level": "venue"
+ },
+ "Etterbeek (Emergences)": {
+  "lat": "50.8361447",
+  "lon": "4.3861737",
+  "label": "Etterbeek, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Bruxelles — centre": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Liège — Pl. Saint-Lambert": {
+  "lat": "50.6462252",
+  "lon": "5.5742724",
+  "label": "Palais de Justice de Liège, Place Saint-Lambert, Îlot Saint-Michel",
+  "level": "venue"
+ },
+ "Beaumont — BMT": {
+  "lat": "50.2355294",
+  "lon": "4.2383115",
+  "label": "Beaumont, Thuin, Hainaut",
+  "level": "venue"
+ },
+ "Maastricht": {
+  "lat": "51.2246648",
+  "lon": "2.9138958",
+  "label": "Filip van Maastrichtplein, Vlaams Plein, Oostende",
+  "level": "venue"
+ },
+ "Bruxelles + en ligne (Emergences)": {
+  "fail": true
+ },
+ "Lille — Place Rihour": {
+  "lat": "50.6360284",
+  "lon": "3.0632780",
+  "label": "Aux Moules de Lille, Place Rihour, Euralille",
+  "level": "venue"
+ },
+ "Bruxelles — Place Stéphanie 18": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Bruxelles — Serendip Spa": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Louvain-la-Neuve": {
+  "lat": "50.6740673",
+  "lon": "4.6138095",
+  "label": "Louvain-la-Neuve, Ottignies-Louvain-la-Neuve, Nivelles",
+  "level": "venue"
+ },
+ "Ville de Luxembourg (plusieurs places)": {
+  "lat": "49.6032843",
+  "lon": "6.1362189",
+  "label": "Ville de Luxembourg, 3, Rue du Laboratoire",
+  "level": "venue"
+ },
+ "Trèves — Domfreihof & Hauptmarkt": {
+  "lat": "49.7596208",
+  "lon": "6.6441878",
+  "label": "Trier, Rheinland-Pfalz, Deutschland",
+  "level": "venue"
+ },
+ "Düsseldorf — Altstadt": {
+  "lat": "51.2305479",
+  "lon": "6.7742628",
+  "label": "Kunstakademie Düsseldorf, 1, Eiskellerstraße",
+  "level": "venue"
+ },
+ "La Hulpe — place communale": {
+  "lat": "50.7313729",
+  "lon": "4.4893987",
+  "label": "La Hulpe, Nivelles, Brabant wallon",
+  "level": "venue"
+ },
+ "Beauvechain — place communale": {
+  "lat": "50.7808981",
+  "lon": "4.7717304",
+  "label": "Beauvechain, Nivelles, Brabant wallon",
+  "level": "venue"
+ },
+ "Namur — Théâtre de Namur": {
+  "lat": "50.4643702",
+  "lon": "4.8681588",
+  "label": "Théâtre Royal de Namur, 2, Place du Théâtre",
+  "level": "venue"
+ },
+ "Mons — Théâtre Royal": {
+  "lat": "50.4549568",
+  "lon": "3.9519580",
+  "label": "Mons, Hainaut, Wallonie",
+  "level": "venue"
+ },
+ "Anvers — centre historique": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Bruxelles — Galini Yoga": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Mons — Grand-Place, Marché aux Herbes & Place Léopold": {
+  "lat": "50.4549568",
+  "lon": "3.9519580",
+  "label": "Mons, Hainaut, Wallonie",
+  "level": "venue"
+ },
+ "Louvain (marché : 3-20 déc)": {
+  "lat": "50.8792020",
+  "lon": "4.7011675",
+  "label": "Leuven, Vlaams-Brabant, Vlaanderen",
+  "level": "venue"
+ },
+ "Anvers — Zaal AthenA": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Eupen — Klötzerbahn (Ostbelgien)": {
+  "lat": "50.6305665",
+  "lon": "6.0312717",
+  "label": "Eupen, Verviers, Liège",
+  "level": "venue"
+ },
+ "Kasterlee (Kempen)": {
+  "lat": "51.2407915",
+  "lon": "4.9678120",
+  "label": "Kasterlee, Turnhout, Antwerpen",
+  "level": "venue"
+ },
+ "Han-sur-Lesse": {
+  "lat": "50.1254505",
+  "lon": "5.1877385",
+  "label": "Han-sur-Lesse, Rochefort, Dinant",
+  "level": "venue"
+ },
+ "Cologne — Zoo": {
+  "lat": "50.9383610",
+  "lon": "6.9599740",
+  "label": "Köln, Nordrhein-Westfalen, Deutschland",
+  "level": "venue"
+ },
+ "Saint-Vith (Ostbelgien)": {
+  "lat": "50.2803881",
+  "lon": "6.1258953",
+  "label": "Sankt Vith, Verviers, Liège",
+  "level": "venue"
+ },
+ "Pathé Belgique": {
+  "fail": true
+ },
+ "Mondorf-les-Bains (Luxembourg)": {
+  "lat": "49.5135633",
+  "lon": "6.2737312",
+  "label": "Mondorf-les-Bains, Canton Remich, Lëtzebuerg",
+  "level": "venue"
+ },
+ "Grevenmacher (Luxembourg, sur la Moselle)": {
+  "lat": "49.6769536",
+  "lon": "6.4111782",
+  "label": "Grevenmacher, Canton Grevenmacher, Lëtzebuerg",
+  "level": "venue"
+ },
+ "Waarland (Pays-Bas, Noord-Holland)": {
+  "lat": "52.7275339",
+  "lon": "4.8285879",
+  "label": "Waarland, Schagen, Noord-Holland",
+  "level": "venue"
+ },
+ "Oud-Heverlee (Brabant wallon !)": {
+  "lat": "50.8376275",
+  "lon": "4.6629253",
+  "label": "Oud-Heverlee, Leuven, Vlaams-Brabant",
+  "level": "venue"
+ },
+ "Geetbets (Brabant flamand)": {
+  "lat": "50.8917946",
+  "lon": "5.1144682",
+  "label": "Geetbets, Leuven, Vlaams-Brabant",
+  "level": "venue"
+ },
+ "Baarlo (Pays-Bas, Kasteel de Berckt)": {
+  "lat": "51.3319545",
+  "lon": "6.0967255",
+  "label": "Baarlo, Peel en Maas, Limburg",
+  "level": "venue"
+ },
+ "Wouwse Plantage (Pays-Bas, près de la frontière)": {
+  "lat": "51.4829843",
+  "lon": "4.3906540",
+  "label": "Wouwse Plantage, Roosendaal, Noord-Brabant",
+  "level": "venue"
+ },
+ "Anvers — MoMu, ModeMuseum": {
+  "lat": "51.2211097",
+  "lon": "4.3997081",
+  "label": "Antwerpen, Vlaanderen, België / Belgique / Belgien",
+  "level": "venue"
+ },
+ "Gand — Flanders Expo": {
+  "lat": "51.0538286",
+  "lon": "3.7250121",
+  "label": "Gent, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Gand — Museum of Fine Arts (MSK)": {
+  "lat": "51.0538286",
+  "lon": "3.7250121",
+  "label": "Gent, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Gand — multiples lieux": {
+  "lat": "51.0538286",
+  "lon": "3.7250121",
+  "label": "Gent, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Mons — centre historique": {
+  "lat": "50.4549568",
+  "lon": "3.9519580",
+  "label": "Mons, Hainaut, Wallonie",
+  "level": "venue"
+ },
+ "Gand — centre": {
+  "lat": "51.0538286",
+  "lon": "3.7250121",
+  "label": "Gent, Oost-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Bruxelles — centre historique": {
+  "lat": "50.8551025",
+  "lon": "4.3510915",
+  "label": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest",
+  "level": "venue"
+ },
+ "Waarland (Pays-Bas)": {
+  "lat": "52.7275339",
+  "lon": "4.8285879",
+  "label": "Waarland, Schagen, Noord-Holland",
+  "level": "venue"
+ },
+ "Toute la Belgique — ateliers d'artisans": {
+  "fail": true
+ },
+ "Grand-Bigard — château": {
+  "lat": "50.8707084",
+  "lon": "4.2651493",
+  "label": "Groot-Bijgaarden, Dilbeek, Halle-Vilvoorde",
+  "level": "venue"
+ },
+ "Grevenmacher (Luxembourg)": {
+  "lat": "49.6769536",
+  "lon": "6.4111782",
+  "label": "Grevenmacher, Canton Grevenmacher, Lëtzebuerg",
+  "level": "venue"
+ },
+ "Knokke-Heist — plage": {
+  "lat": "51.3433866",
+  "lon": "3.2884738",
+  "label": "Knokke-Heist, Brugge, West-Vlaanderen",
+  "level": "venue"
+ },
+ "Libramont": {
+  "lat": "49.9499100",
+  "lon": "5.4370892",
+  "label": "Libramont-Chevigny, Neufchâteau, Luxembourg",
+  "level": "venue"
+ },
+ "Bruges": {
+  "lat": "51.2085526",
+  "lon": "3.2267720",
+  "label": "Brugge, West-Vlaanderen, Vlaanderen",
+  "level": "venue"
+ },
+ "Meise — Jardin botanique": {
+  "lat": "50.9341625",
+  "lon": "4.3287322",
+  "label": "Meise, Halle-Vilvoorde, Vlaams-Brabant",
+  "level": "venue"
+ },
+ "Genk — Musée de plein air": {
+  "lat": "50.9667627",
+  "lon": "5.4833953",
+  "label": "Genk, Hasselt, Limburg",
+  "level": "venue"
+ },
+ "ZOO Planckendael (Malines)": {
+  "lat": "51.0022386",
+  "lon": "4.5144687",
+  "label": "Zoo Planckendael, 582, Leuvensesteenweg",
+  "level": "venue"
+ },
+ "Brugelette": {
+  "lat": "50.6016956",
+  "lon": "3.8647979",
+  "label": "Brugelette, Ath, Hainaut",
+  "level": "venue"
+ },
+ "Aywaille (Ardenne)": {
+  "lat": "50.4584812",
+  "lon": "5.6989069",
+  "label": "Aywaille, Liège, Wallonie",
+  "level": "venue"
+ },
+ "Jalhay / Cokaifagne (Hautes Fagnes)": {
+  "fail": true
+ },
+ "Hautes Fagnes–Eifel": {
+  "lat": "50.3961685",
+  "lon": "6.3158232",
+  "label": "Parc naturel des Hautes-Fagnes – Eifel, Verviers, Liège",
+  "level": "venue"
+ },
+ "La Roche-en-Ardenne": {
+  "lat": "50.1815604",
+  "lon": "5.5759476",
+  "label": "La Roche-en-Ardenne, Marche-en-Famenne, Luxembourg",
+  "level": "venue"
+ },
+ "Ostbelgien (Burg-Reuland, Heppenbach…)": {
+  "lat": "50.3303149",
+  "lon": "6.2030286",
+  "label": "Deutschsprachige Gemeinschaft, Liège, Wallonie",
+  "level": "venue"
+ }
+}
