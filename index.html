@@ -39,6 +39,7 @@ main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;margin-bottom:10px;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,#7c3aed)}
 .card h3{font-size:.95rem;line-height:1.35;margin-right:26px}
+.cover{width:100%;height:84px;object-fit:cover;border-radius:12px;margin-bottom:9px;display:block}
 .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .b{font-size:.66rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--dim);background:rgba(255,255,255,.04)}
 .b.cat{color:var(--bg);font-weight:700;border:none}
@@ -188,6 +189,8 @@ const E=[
 {n:"Fééries de Noël de La Hulpe",cat:"lumiere",d:"2026-12-11",d2:"2026-12-13",t:"dès 18:00 le vendredi",loc:"La Hulpe — place communale",url:"https://www.lahulpe.be",status:"tba",desc:"Village de Noël, show LED, concerts gospel, crèche (édition 2025 : 12-14 déc). À 15 min de Taurine. Programme sur le site de la commune."},
 {n:"Noël à Villers — Abbaye de Villers-la-Ville",cat:"lumiere",d:"2026-12-05",d2:"2026-12-13",loc:"Villers-la-Ville — abbaye cistercienne",adr:"Rue de l'Abbaye 55, 1495 Villers-la-Ville",url:"https://villers.be",status:"tba",desc:"Marché de Noël dans les ruines gothiques de l'abbaye, embrasements et ambiance médiévale (dates 2026 à confirmer sur villers.be). À 20 min de Taurine."},
 {n:"Village de Noël de Beauvechain",cat:"lumiere",d:"2026-12-12",d2:"2027-01-04",t:"17:00-21:00",loc:"Beauvechain — place communale",url:"https://www.beauvechain.be",status:"tba",desc:"À Tourinnes-la-Grosse même ! Village de Noël sur la place : chalets, animations, atmosphère villageoise (modèle 2025 : 13-14 & 19 déc → 4 janv). Dates 2026 à confirmer sur beauvechain.be."},
+{n:"Son & lumière — Château de Bouillon",cat:"lumiere",d:"2026-10-10",d2:"2026-11-11",t:"soirées en semaine & week-ends",loc:"Bouillon — château fort",url:"https://visitwallonia.be",status:"tba",desc:"Le château fort s'embrase : spectacle son et lumière nocturne au bord de la Semois, jusqu'au 11 novembre."},
+{n:"Festival des sciences de Bruxelles",cat:"esprit",d:"2026-11-15",loc:"Bruxelles",url:"https://www.familinbruxelles.com",status:"tba",desc:"Sciences, expériences et émerveillement pour tous. Programme et lieu sur familinbruxelles.com."},
 // ===== DÉCEMBRE =====
 {n:"⭐ Winter in Antwerpen",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Anvers — centre historique",url:"https://www.antwerpen.be",star:1,desc:"Marché, illuminations, concerts, gastronomie. Programme sur le site de la ville."},
 {n:"Gentse Winterfeesten",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Gand",url:"https://visit.gent.be",desc:"Marché + grande roue Saint-Pierre. Infos sur le site."},
@@ -230,6 +233,8 @@ const E=[
 {n:"🦋 Jardin des Papillons de Grevenmacher 🇱🇺",cat:"nature",d:"2026-10-10",d2:"2026-10-31",t:"tous les jours 09:00-17:00",loc:"Grevenmacher (Luxembourg, sur la Moselle)",url:"https://www.naturwanderpark.eu",border:1,desc:"Serre à papillons exotiques du domaine Bernard-Massard. SAISON FINISSANTE : ouvert jusqu'au 31 octobre seulement — dernière chance avant mai 2027 !"},
 {n:"🦋 Vlindorado 🇳🇱",cat:"nature",d:"2026-10-10",d2:"2026-11-30",t:"ma-sa 10:00-17:00 · dim 11:00-17:00",loc:"Waarland (Pays-Bas, Noord-Holland)",url:"https://www.vlindorado.nl",border:1,desc:"Grande serre à papillons néerlandaise. Ouvert jusqu'au 30 novembre 2026 (horaires réduits du 25 oct au 14 nov), puis fermeture hivernale jusqu'à mi-février 2027."},
 {n:"♾️ Hexapoda — l'insectarium de Waremme",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Waremme (Liège)",adr:"Rue de Grand-Axhe 45E, 4300 Waremme",price:"6 €",url:"https://hexapoda.be",perm:1,desc:"Le musée des insectes de Wallonie (partenaire de l'expo papillons de Liège) : parcours ludique + jardin."},
+{n:"🎬 Met Opera — La Flûte enchantée (Holiday Encore)",cat:"cinema",d:"2026-12-12",d2:"2027-01-02",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"La version féérique des fêtes de Mozart au cinéma — séances dont le mercredi 30 décembre à 12h00. Horaires belges sur pathe.be."},
+{n:"Philip Glass — Extended Music Collective (BOZAR)",cat:"esprit",d:"2026-12-06",t:"11:00",loc:"Bruxelles — BOZAR, Grande salle",url:"https://www.bozar.be",desc:"Matinée contemplative autour de Philip Glass : musique minimaliste en très grand format."},
 // ===== RANDOS 7-25 KM (toute la période) =====
 {n:"♾️ Rando : Vallon du Ninglinspo",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7-12 km",loc:"Aywaille (Ardenne)",url:"https://www.gael.be",perm:1,desc:"Le seul « torrent » de Belgique : ruisseaux, cascades, rochers. Itinéraires détaillés sur Gael.be."},
 {n:"♾️ Rando : la Hoëgne",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7,5-14 km",loc:"Jalhay / Cokaifagne (Hautes Fagnes)",url:"https://visitwallonia.be",perm:1,desc:"Ruisseau romantique et sauvage né dans les fagnes, ponts de rondins, fagne de Malchamps. Fiche balade sur VisitWallonia."},
@@ -245,9 +250,7 @@ const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
 const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
 const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
-let fCat="all", fMonth="all", fSoon=false, fQ="", fFree=false, fWknd=false, fFav=false;
-let favs=[];try{favs=JSON.parse(localStorage.getItem("favsBE")||"[]")}catch(_){}
-function toggleFav(k){const i=favs.indexOf(k);if(i>=0)favs.splice(i,1);else favs.push(k);try{localStorage.setItem("favsBE",JSON.stringify(favs))}catch(_){};render()}
+let fCat="all", fMonth="all", fSoon=false, fQ="", fFree=false, fWknd=false;
 function isWeekend(e){const s=pd(e.d),en=endOf(e);const t=new Date(TODAY);const day=t.getDay();const sat=new Date(t);sat.setDate(t.getDate()+((6-day)+7)%7-(day===0?7:0));const sun=new Date(sat);sun.setDate(sat.getDate()+1);return (s<=sat&&en>=sat)||(s<=sun&&en>=sun)}
 const TODAY=new Date(); TODAY.setHours(0,0,0,0);
 const endOf=e=>pd(e.d2||e.d);
@@ -277,6 +280,36 @@ function priceLevel(e){
  for(const[s,l]of PL_TABLE){if(k.includes(s))return l}
  return 1;
 }
+function coverSVG(grad,emoji){const s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='84'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>"+grad+"</linearGradient></defs><rect width='400' height='84' fill='url(#g)'/><circle cx='60' cy='18' r='2.5' fill='rgba(255,255,255,.7)'/><circle cx='180' cy='70' r='2' fill='rgba(255,255,255,.5)'/><circle cx='300' cy='14' r='2' fill='rgba(255,255,255,.6)'/><text x='352' y='58' font-size='42' text-anchor='middle'>"+emoji+"</text></svg>";return "data:image/svg+xml;utf8,"+encodeURIComponent(s)}
+const COVERS={
+ lumiere:coverSVG("<stop offset='0' stop-color='#7c3aed'/><stop offset='1' stop-color='#f59e0b'/>","🎆"),
+ immersif:coverSVG("<stop offset='0' stop-color='#4f46e5'/><stop offset='1' stop-color='#c026d3'/>","🌀"),
+ bienetre:coverSVG("<stop offset='0' stop-color='#0d9488'/><stop offset='1' stop-color='#84cc16'/>","🧘"),
+ bouddhisme:coverSVG("<stop offset='0' stop-color='#b45309'/><stop offset='1' stop-color='#dc2626'/>","☸️"),
+ salon:coverSVG("<stop offset='0' stop-color='#0284c7'/><stop offset='1' stop-color='#22d3ee'/>","🛍️"),
+ esprit:coverSVG("<stop offset='0' stop-color='#1d4ed8'/><stop offset='1' stop-color='#9333ea'/>","🌌"),
+ spectacle:coverSVG("<stop offset='0' stop-color='#b91c1c'/><stop offset='1' stop-color='#f59e0b'/>","🎭"),
+ nature:coverSVG("<stop offset='0' stop-color='#15803d'/><stop offset='1' stop-color='#a3e635'/>","🦋"),
+ cinema:coverSVG("<stop offset='0' stop-color='#111827'/><stop offset='1' stop-color='#6d28d9'/>","🎬")
+};
+function escICS(s){return (s||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
+function icsFile(e){
+ const st=pd(e.d), en=new Date(pd(e.d2||e.d).getTime()+864e5);
+ const f=x=>x.toISOString().replace(/[-:]/g,"").split(".")[0]+"Z";
+ return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//CalendrierBE//FR","BEGIN:VEVENT",
+  "UID:"+Date.now()+Math.random().toString(36).slice(2)+"@calendrier-be",
+  "DTSTAMP:"+f(new Date()),"DTSTART;VALUE=DATE:"+f(st),"DTEND;VALUE=DATE:"+f(en),
+  "SUMMARY:"+escICS(e.n),"LOCATION:"+escICS(e.loc||"Belgique"),
+  "DESCRIPTION:"+escICS((e.desc||"")+" — "+(e.url||"")),
+  "BEGIN:VALARM","TRIGGER:-PT12H","ACTION:DISPLAY","DESCRIPTION:Rappel événement demain","END:VALARM",
+  "END:VEVENT","END:VCALENDAR"].join("\r\n");
+}
+function dlICS(e){
+ const blob=new Blob([icsFile(e)],{type:"text/calendar"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=e.n.replace(/[^\wàâäéèêëîïôöùûüç \-]/gi,"").slice(0,60)+".ics";
+ document.body.appendChild(a);a.click();a.remove();
+ toast("📅 Fichier téléchargé — ouvre-le pour l'ajouter à ton agenda (rappel 12h avant inclus) !");
+}
 function render(){
  const list=$("#list");list.innerHTML="";
  const all=E.filter(e=>{
@@ -287,7 +320,6 @@ function render(){
   if(fQ){const q=fQ.toLowerCase();if(!(e.n+" "+e.loc+" "+(e.desc||"")).toLowerCase().includes(q))return false}
   if(fFree&&priceLevel(e)!=="free")return false;
   if(fWknd&&!isWeekend(e))return false;
-  if(fFav&&!favs.includes(e.n+"|"+e.d))return false;
   return true;
  });
  const ongoing=all.filter(isOngoing).sort((a,b)=>endOf(a)-endOf(b)||a.n.localeCompare(b.n));
@@ -304,18 +336,17 @@ function render(){
    (e.perm?'<span class="b perm">♾️ permanent</span>':'')+
    (e.border?'<span class="b">🌍 frontière</span>':'')+
    (isOngoing(e)&&endOf(e)>TODAY?'<span class="b free">jusqu\'au '+short(endOf(e).toISOString().slice(0,10))+'</span>':'');
-  el.innerHTML='<h3>'+e.n+(e.star?' <span class="star">⭐</span>':'')+'</h3>'+
+  el.innerHTML='<img class="cover" src="'+COVERS[e.cat]+'" alt="">'+
+   '<h3>'+e.n+(e.star?' <span class="star">⭐</span>':'')+'</h3>'+
    '<div class="badges">'+badges+'</div>'+
    '<div class="meta">📍 <b>'+(e.loc||"")+'</b>'+(e.t?' · 🕒 '+e.t:'')+
    (e.desc?'<br>'+e.desc:'')+'</div>'+
    '<div class="cardrow">'+
-   (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">ℹ️ Infos & réservation</a>':'')+
-   '<a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">📅 Mon agenda</a>'+
+   (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">ℹ️ Infos</a>':'')+
+   '<a class="btn icsbtn" href="#">📅 Agenda (.ics)</a>'+
+   '<a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">🌐 Google</a>'+
    '<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent("Tourinnes-la-Grosse, 1320 Beauvechain")+'&destination='+encodeURIComponent(e.adr||(e.loc?e.loc.split(" — ").join(", "):"")+(e.border?"":", Belgique"))+'">🗺️ Itinéraire</a></div>';
-  const k=e.n+"|"+e.d;
-  const fb=document.createElement("a");fb.className="btn";fb.href="#";fb.textContent=(favs.includes(k)?"❤️":"🤍")+" Favori";
-  fb.addEventListener("click",ev=>{ev.preventDefault();toggleFav(k)});
-  el.querySelector(".cardrow").appendChild(fb);
+  el.querySelector(".icsbtn").addEventListener("click",ev=>{ev.preventDefault();dlICS(e)});
   return el;
  }
  if(ongoing.length){
@@ -341,7 +372,7 @@ chips.forEach(([k,l],i)=>{const b=document.createElement("button");b.className="
  b.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");fCat=k;render()};box.appendChild(b)});
 const soonChip=document.createElement("button");soonChip.className="chip";soonChip.textContent="⏳ 7 prochains jours";
 soonChip.onclick=()=>{fSoon=!fSoon;soonChip.classList.toggle("on",fSoon);render()};box.appendChild(soonChip);
-[["🆓 Gratuit",()=>fFree,()=>{fFree=!fFree}],["🎉 Ce week-end",()=>fWknd,()=>{fWknd=!fWknd}],["❤️ Favoris",()=>fFav,()=>{fFav=!fFav}]].forEach(([l,g,cl])=>{
+[["🆓 Gratuit",()=>fFree,()=>{fFree=!fFree}],["🎉 Ce week-end",()=>fWknd,()=>{fWknd=!fWknd}]].forEach(([l,g,cl])=>{
  const b=document.createElement("button");b.className="chip";b.textContent=l;
  b.onclick=()=>{cl();b.classList.toggle("on",g());render()};box.appendChild(b)});
 document.querySelectorAll("#months button").forEach(b=>{b.onclick=()=>{
