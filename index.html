@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f1e">
+<title>Calendrier Bien-être & Lumière — Belgique</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0b0f1e;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--txt:#eef1ff;--dim:#9aa3c7;--gold:#ffd166;--mint:#7cf5c8;--lav:#c4b5fd;--pink:#f9a8d4;--sky:#7dd3fc}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;
+background-image:radial-gradient(1200px 600px at 80% -10%,rgba(124,58,237,.25),transparent 60%),radial-gradient(900px 500px at -10% 20%,rgba(14,165,233,.18),transparent 55%),radial-gradient(800px 800px at 50% 110%,rgba(236,72,153,.12),transparent 60%)}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(11,15,30,.72);border-bottom:1px solid var(--line);padding:14px 16px 10px}
+h1{font-size:1.15rem;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+h1 small{display:block;font-size:.68rem;color:var(--dim);font-weight:400;margin-top:2px}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:999px;padding:7px 12px;font-size:.78rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);border:none;font-weight:600}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--dim);border-radius:999px;padding:6px 11px;font-size:.74rem;cursor:pointer;white-space:nowrap}
+.chip.on{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-color:transparent}
+.months{display:flex;gap:4px;margin-top:8px;background:var(--card);border-radius:12px;padding:4px;border:1px solid var(--line)}
+.months button{flex:1;border:none;background:transparent;color:var(--dim);padding:8px;border-radius:9px;font-size:.8rem;cursor:pointer;font-weight:600}
+.months button.on{background:rgba(255,255,255,.1);color:var(--txt)}
+main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
+.banner{margin:6px 0 14px;padding:10px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(37,99,235,.2));border:1px solid var(--line);font-size:.78rem;color:var(--txt)}
+.banner b{color:var(--gold)}
+.dayhead{display:flex;align-items:baseline;gap:10px;margin:22px 2px 10px}
+.dayhead .d{font-size:1.05rem;font-weight:800;color:var(--gold)}
+.dayhead .w{font-size:.72rem;color:var(--dim);text-transform:capitalize}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;margin-bottom:10px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,#7c3aed)}
+.card h3{font-size:.95rem;line-height:1.35;margin-right:26px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.b{font-size:.66rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--dim);background:rgba(255,255,255,.04)}
+.b.cat{color:var(--bg);font-weight:700;border:none}
+.b.tba{color:#fbbf24;border-color:#fbbf24}
+.b.free{color:var(--mint);border-color:var(--mint)}
+.meta{font-size:.78rem;color:var(--dim);line-height:1.5}
+.meta b{color:var(--txt);font-weight:600}
+.cardrow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.cardrow a{flex:1;min-width:120px;text-align:center}
+.card h3 .star{margin-left:4px}
+footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-size:.72rem;text-align:center;line-height:1.6}
+.install{max-width:640px;margin:0 auto 14px;padding:0 14px}
+.install details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:.78rem;color:var(--dim)}
+.install summary{cursor:pointer;color:var(--txt);font-weight:600;font-size:.8rem}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111827;border:1px solid var(--line);color:#fff;padding:10px 18px;border-radius:999px;font-size:.8rem;opacity:0;pointer-events:none;transition:.3s;z-index:99}
+#toast.show{opacity:1}
+.empty{text-align:center;color:var(--dim);padding:40px 0;font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="toprow">
+    <h1>✨ Bien-être & Lumière<small>Belgique + frontières · oct → déc 2026</small></h1>
+    <a class="btn primary" id="shareBtn" href="#">⤴ Partager</a>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="months" id="months">
+    <button data-m="10">Octobre</button>
+    <button data-m="11" class="on">Novembre</button>
+    <button data-m="12">Décembre</button>
+    <button data-m="all">Tout</button>
+  </div>
+</header>
+<main>
+  <div class="banner">🎯 <b>Idée du moment</b> : <span id="tip"></span></div>
+  <div class="install">
+    <details>
+      <summary>📲 Installer sur mon smartphone (1 fois)</summary>
+      <p style="margin-top:8px;line-height:1.6"><b>iPhone</b> : Safari → bouton Partager → « Sur l'écran d'accueil ».<br><b>Android</b> : Chrome → menu ⋮ → « Ajouter à l'écran d'accueil ».<br>L'app se mettra toujours à jour toute seule quand on ajoute des événements ici. ✨</p>
+    </details>
+  </div>
+  <div id="list"></div>
+</main>
+<footer>
+  Dernière mise à jour : <b id="upd"></b> · Passe 3<br>
+  ✅ confirmé officiellement · ⚠️ dates/lieux à confirmer<br>
+  Fait avec 💜 pour la recherche du bien-être
+</footer>
+<div id="toast"></div>
+<script>
+const CATS={
+ lumiere:{l:"💡 Lumière",c:"#ffd166",i:"💡"},
+ immersif:{l:"🎭 Immersif",c:"#c4b5fd",i:"🎭"},
+ bienetre:{l:"🧘 Bien-être",c:"#7cf5c8",i:"🧘"},
+ bouddhisme:{l:"☸️ Bouddhisme",c:"#fca5a5",i:"☸️"},
+ salon:{l:"🛍️ Salon",c:"#7dd3fc",i:"🛍️"},
+ esprit:{l:"🧠 Esprit & Sciences",c:"#f9a8d4",i:"🧠"},
+ spectacle:{l:"🎪 Spectacle",c:"#fdba74",i:"🎪"},
+ nature:{l:"🌿 Nature",c:"#86efac",i:"🌿"}
+};
+const E=[
+// ===== OCTOBRE =====
+{n:"Pavlof — Voyage dans l'inconscient",cat:"spectacle",d:"2026-10-10",t:"20:00",loc:"La Louvière — Louvexpo",desc:"Spectacle d'hypnose grand public, hilarant et émouvant."},
+{n:"Salon du Bien-être de la femme",cat:"salon",d:"2026-10-10",d2:"2026-10-11",t:"10:00-20:00",loc:"Fleurus (Namur)",desc:"Salon bien-être & développement personnel."},
+{n:"Salon « Contacts » — Bien-être & méthodes alternatives",cat:"salon",d:"2026-10-10",d2:"2026-10-11",loc:"Herve (Liège)",desc:"Salon de thérapeutes indépendants."},
+{n:"Salon Rév'ailes — Ton Essenti-elle",cat:"salon",d:"2026-10-10",d2:"2026-10-11",loc:"Région namuroise",status:"tba",desc:"Bien-être & développement personnel féminin."},
+{n:"⭐ Museum Night Fever",cat:"immersif",d:"2026-10-17",t:"19:00-01:00",loc:"Bruxelles — 28 musées",price:"18 €",url:"https://www.museumnightfever.be",star:1,desc:"100+ installations et performances immersives dans les musées + afterparties. Le grand rendez-vous de la nuit bruxelloise."},
+{n:"Salon du Bien-Être de LLN (1ʳᵉ éd.)",cat:"salon",d:"2026-10-17",d2:"2026-10-18",loc:"Louvain-la-Neuve — Le Cercle du Lac",desc:"Week-end équilibre, énergie, bien-être."},
+{n:"L'Agora du mieux-être (1ʳᵉ éd.)",cat:"salon",d:"2026-10-17",d2:"2026-10-18",t:"11:00-18:00",loc:"Floreffe — Moulin-Brasserie de l'Abbaye",desc:"Bien-être & développement personnel."},
+{n:"Salon Bien-être, Nutrition & Médecines douces",cat:"salon",d:"2026-10-17",d2:"2026-10-18",t:"dès 14:00",loc:"Colfontaine (Hainaut)",desc:"Salon bien-être."},
+{n:"Salon du paranormal",cat:"salon",d:"2026-10-17",d2:"2026-10-18",loc:"Hainaut (lieu à confirmer)",status:"tba",desc:"Paranormal & mystères."},
+{n:"Enseignement Bodhicaryavatara",cat:"bouddhisme",d:"2026-10-22",t:"20:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Enseignement bouddhiste hebdomadaire."},
+{n:"⭐ Notre conscience immortelle — S. Allix & S. Jecker",cat:"esprit",d:"2026-10-23",t:"19:30-22:30",loc:"Mons — Amphithéâtre Stiévenart",url:"https://halteproduction.com",star:1,desc:"20 ans de recherche sur EMI, médiumnité, états modifiés de conscience : quand la science confirme les sagesses millénaires."},
+{n:"⭐ Lodjong avec Lama Rinchen Palmo",cat:"bouddhisme",d:"2026-10-24",t:"10:00-17:30",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",star:1,desc:"Journée complète d'entraînement de l'esprit."},
+{n:"Stage Cohérence Cardiaque (F. Coppieters)",cat:"bienetre",d:"2026-10-24",d2:"2026-10-25",t:"10:00-16:00",loc:"Belgique (voir billetterie)",desc:"Cœur-cerveau, respiration, équilibre."},
+{n:"Journée Bien-être animal",cat:"bienetre",d:"2026-10-25",t:"10:00-17:00",loc:"Namur — Arsenal",desc:"Bien-être au service des animaux."},
+{n:"⭐ De Grote Schijn",cat:"lumiere",d:"2026-10-29",d2:"2026-11-22",loc:"Anvers (Deurne) — Parc Rivierenhof",url:"https://www.provincieantwerpen.be",star:1,desc:"Parcours son & lumière immersif à travers le parc, dans le noir. Un des plus beaux d'Europe."},
+{n:"Pratique de méditation",cat:"bouddhisme",d:"2026-10-30",t:"10:00",loc:"Beaumont — Kagyu Samye Ling Belgium",url:"https://www.kagyusamyeling.be",desc:"Méditation guidée."},
+{n:"Holotropic Breathwork Workshop",cat:"bienetre",d:"2026-10-30",d2:"2026-11-01",loc:"Anvers — Cornelissenlaan 1",url:"https://holotropic-association.eu",desc:"Week-end intensif de respiration holotropique."},
+{n:"⭐ Dino Nights — festival de lumière",cat:"lumiere",d:"2026-10-30",d2:"2027-01-03",loc:"ZOO Planckendael (Malines)",url:"https://www.zooplanckendael.be",star:1,desc:"50+ dinosaures géants illuminés, une « mer de lumière préhistorique »."},
+{n:"25ᵉ salon unique (bien-être)",cat:"salon",d:"2026-10-31",d2:"2026-11-01",loc:"Anvers",status:"tba",desc:"Voir out.be pour le programme."},
+// ===== NOVEMBRE =====
+{n:"Salon « Les Chemins du Nirvana »",cat:"salon",d:"2026-11-01",t:"09:30-17:00",loc:"Courcelles — salle Miaucourt",price:"1 €",status:"tba",desc:"Bien-être & arts divinatoires."},
+{n:"Holosomatic® Breathwork — Heart Opening",cat:"bienetre",d:"2026-11-01",t:"19:00",loc:"Gand",url:"https://innercamp.com",desc:"Respiration & ouverture du cœur."},
+{n:"Monthly Reset — cacao + breathwork + sons",cat:"bienetre",d:"2026-11-01",t:"20:00-00:30",loc:"Anvers — Alchemia",url:"https://www.alchemia.be",desc:"3h30 de cacao, respiration profonde et bains sonores."},
+{n:"Méditation au gong — Atlantis",cat:"bienetre",d:"2026-11-03",t:"19:00",loc:"Bruxelles — Atlantis ASBL",desc:"« Un spa sonore pour votre âme »."},
+{n:"Introduction à la méditation (EN)",cat:"bouddhisme",d:"2026-11-07",t:"14:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Atelier découverte 1h30."},
+{n:"Candlelight — Tribute to Hans Zimmer",cat:"immersif",d:"2026-11-07",loc:"Anvers",desc:"Classiques de cinéma à la lueur des bougies."},
+{n:"⭐ GLOW Eindhoven 🇳🇱",cat:"lumiere",d:"2026-11-07",d2:"2026-11-14",t:"18:30-23:00",loc:"Eindhoven (Pays-Bas)",price:"GRATUIT",url:"https://gloweindhoven.nl",star:1,border:1,desc:"Le plus grand festival d'art lumineux des Pays-Bas. Ouverture avec un spectacle de DRONES au Philips Stadion !"},
+{n:"Conférence — La conscience & la science",cat:"esprit",d:"2026-11-08",t:"15:00",loc:"Ittre — Centre culturel",status:"tba",desc:"« La conscience résiste-t-elle encore à la science ? »"},
+{n:"Pavlof — Voyage dans l'inconscient",cat:"spectacle",d:"2026-11-08",t:"20:00",loc:"Bruxelles — Wolubilis",desc:"Spectacle d'hypnose."},
+{n:"⭐ Bains de gongs nocturnes",cat:"bienetre",d:"2026-11-09",t:"20:30-22:00",loc:"Bruxelles — La Tricoterie (St-Gilles)",url:"https://www.tricoterie.be",star:1,desc:"Voyage sonore vibratoire allongé dans le noir."},
+{n:"Sound Healing by the Pool",cat:"bienetre",d:"2026-11-11",t:"20:00",loc:"Anvers — Massage Exchange Lounge",desc:"Bain sonore flottant en piscine."},
+{n:"⭐ Kerststad Valkenburg 🇳🇱",cat:"lumiere",d:"2026-11-13",d2:"2026-12-30",loc:"Valkenburg (Pays-Bas)",url:"https://www.kerstmarktgemeentegrot.nl",star:1,border:1,desc:"Les marchés de Noël à l'intérieur des grottes — ultra sensoriel."},
+{n:"Journée de pratique (assise & marche)",cat:"bouddhisme",d:"2026-11-14",loc:"Belgique — Anne-Marie Flamand",url:"https://annemarieflamand.be",desc:"Retraite d'UNE journée pleine conscience."},
+{n:"Introduction à la méditation (FR)",cat:"bouddhisme",d:"2026-11-14",t:"14:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Atelier découverte 1h30."},
+{n:"Conférence — amour de soi",cat:"esprit",d:"2026-11-16",t:"19:00",loc:"Bruxelles — Ixelles (Emergences)",desc:"Développement personnel."},
+{n:"Luminate Hasselt (jardin japonais)",cat:"lumiere",d:"2026-11-14",d2:"2026-11-23",loc:"Hasselt — Japanese Garden",status:"tba",url:"https://www.luminatefestival.be",desc:"Festival lumière (modèle 2025 : 7-23 nov)."},
+{n:"Enseignement Bodhicaryavatara",cat:"bouddhisme",d:"2026-11-19",t:"20:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Enseignement bouddhiste."},
+{n:"⭐ Winter Glow Bruges",cat:"lumiere",d:"2026-11-20",d2:"2027-02-14",loc:"Bruges — centre historique",url:"https://www.visitbruges.be/winter-glow",star:1,desc:"Parcours de ~14 installations lumineuses d'artistes internationaux + patinoire + marchés."},
+{n:"⭐ Noël de Durbuy",cat:"lumiere",d:"2026-11-20",d2:"2027-01-03",loc:"Durbuy",desc:"Le plus petit village du monde entièrement illuminé (weekends, puis tous les jours dès le 21 déc)."},
+{n:"⭐ Noël aux Jardins d'Annevoie",cat:"lumiere",d:"2026-11-20",d2:"2026-11-29",loc:"Anhée (Namur)",price:"~7 €",url:"https://www.annevoie.be",star:1,desc:"Illuminations féériques des jardins d'eau + marché de 50 artisans."},
+{n:"Cité de Noël de Malmedy",cat:"lumiere",d:"2026-11-28",d2:"2026-12-28",loc:"Malmedy",status:"tba",desc:"Marché, patinoire, crèches illuminées (modèle 2025)."},
+{n:"⭐ Winterland Hasselt",cat:"lumiere",d:"2026-11-13",d2:"2027-01-03",loc:"Hasselt — Kolonel Dusartplein",url:"https://www.winterland.be",star:1,desc:"Marché + attractions + light show chaque heure de 17h à 22h."},
+{n:"⭐ Putteke Winter — De Ster",cat:"lumiere",d:"2026-11-21",t:"entrée 17:30-21:00",loc:"Sint-Niklaas — domaine De Ster",price:"dès 9 €",desc:"Balade nocturne de 3 km « pleine de feu et de lumière »."},
+{n:"Putteke Winter — Halve Maan",cat:"lumiere",d:"2026-11-28",loc:"Diest — domaine Halve Maan",status:"tba",desc:"Shows LED, contes, spectacles de feu (déjà clôturé par 150 drones en 2023)."},
+{n:"Christmas Time — Pairi Daiza",cat:"lumiere",d:"2026-11-29",d2:"2027-01-04",loc:"Brugelette",status:"tba",url:"https://www.pairidaiza.eu",desc:"Illuminations féériques sur 75 ha + train de Noël."},
+{n:"Atelier « Eveiller la joie »",cat:"esprit",d:"2026-11-23",t:"19:00-20:30",loc:"Etterbeek (Emergences)",price:"5 €",desc:"Méditation & joie."},
+{n:"⭐ Plaisirs d'Hiver + Son & lumière Grand-Place",cat:"lumiere",d:"2026-11-27",d2:"2027-01-03",loc:"Bruxelles — centre",url:"https://www.brussels.be",star:1,desc:"Grand marché + spectacle son & lumière de la Grand-Place chaque soir 17h-22h (sauf 24 & 31 déc)."},
+{n:"⭐ Village de Noël de Liège",cat:"lumiere",d:"2026-11-27",d2:"2026-12-30",loc:"Liège — Pl. Saint-Lambert",desc:"150+ chalets, pyramide géante, grande roue, illuminations."},
+{n:"Lodjong avec Lama Rinchen Palmo",cat:"bouddhisme",d:"2026-11-28",t:"10:00-17:30",loc:"Beaumont — BMT",url:"https://www.samye.be",desc:"Journée de pratique bouddhiste."},
+{n:"Salon NaturaBio 🇫🇷",cat:"salon",d:"2026-11-27",d2:"2026-11-29",t:"10:00-19:00",loc:"Lille Grand Palais",border:1,desc:"215 exposants bio & bien-être + ateliers. Combo parfait avec le marché de Noël de Lille (dès le 18 nov)."},
+{n:"Magical Maastricht 🇳🇱",cat:"lumiere",d:"2026-11-27",d2:"2026-12-27",loc:"Maastricht",border:1,url:"https://www.visitmaastricht.com",desc:"Hiver féérique : lumières, marché, ambiance."},
+{n:"Conférence Albert Moukheiber — Neuromania",cat:"esprit",d:"2026-11-30",t:"19:00",loc:"Bruxelles + en ligne (Emergences)",price:"17,50 €",desc:"Déjouer les mythes sur le cerveau."},
+{n:"Marché de Noël de Lille 🇫🇷",cat:"lumiere",d:"2026-11-18",d2:"2026-12-30",loc:"Lille — Place Rihour",border:1,desc:"Grande roue, ~90 chalets, ville illuminée."},
+// ===== DÉCEMBRE =====
+{n:"⭐ Winter in Antwerpen",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Anvers — centre historique",url:"https://www.antwerpen.be",star:1,desc:"Marché, illuminations, concerts, gastronomie."},
+{n:"Gentse Winterfeesten",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Gand",desc:"Marché + grande roue Saint-Pierre."},
+{n:"Gong bath — Galini Yoga",cat:"bienetre",d:"2026-12-03",t:"18:00-21:30",loc:"Bruxelles — Galini Yoga",price:"45 €",desc:"Bain sonore profond avec Swann & Ely."},
+{n:"Enseignement Bodhicaryavatara",cat:"bouddhisme",d:"2026-12-03",t:"20:00",loc:"Beaumont — BMT",url:"https://www.samye.be",desc:"Enseignement bouddhiste."},
+{n:"Candlelight — Hans Zimmer",cat:"immersif",d:"2026-12-05",loc:"Anvers",desc:"Concert à la bougie."},
+{n:"Tantra Essence — workshop 2 jours",cat:"bienetre",d:"2026-12-05",t:"10:00",loc:"Bruxelles",desc:"Célibataires & couples."},
+{n:"Mons Cœur en Neige",cat:"lumiere",d:"2026-12-06",d2:"2026-12-31",loc:"Mons — Grand-Place",desc:"Marché de Noël, chalets, illuminations."},
+{n:"⭐ Bains de gongs nocturnes",cat:"bienetre",d:"2026-12-07",t:"20:30-22:00",loc:"Bruxelles — La Tricoterie",url:"https://www.tricoterie.be",star:1,desc:"Voyage sonore vibratoire."},
+{n:"Wintertijd Leuven + Kerstmarkt",cat:"lumiere",d:"2026-12-08",d2:"2027-01-10",loc:"Louvain (marché : 3-20 déc)",desc:"Hiver féérique, lumières, marché."},
+{n:"Candlelight — Michael Jackson tribute",cat:"immersif",d:"2026-12-10",t:"21:00",loc:"Anvers — Zaal AthenA",desc:"Concert à la bougie."},
+{n:"Eupener Weihnachtsmarkt 🇧🇪 (DE)",cat:"lumiere",d:"2026-12-11",d2:"2026-12-13",loc:"Eupen — Klötzerbahn (Ostbelgien)",desc:"90+ chalets dans la ville germanophone."},
+{n:"Introduction à la méditation (FR)",cat:"bouddhisme",d:"2026-12-12",t:"14:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Atelier découverte."},
+{n:"LICHTaart — light walk",cat:"lumiere",d:"2026-12-13",loc:"Kasterlee (Kempen)",status:"tba",desc:"Lichtjeswandeling."},
+{n:"Monthly Reset — breathwork",cat:"bienetre",d:"2026-12-13",t:"14:30-18:00",loc:"Anvers — Alchemia",url:"https://www.alchemia.be",desc:"3h30 de respiration profonde."},
+{n:"Méditation au gong — Atlantis",cat:"bienetre",d:"2026-12-15",t:"19:00",loc:"Bruxelles — Atlantis ASBL",desc:"Bain sonore."},
+{n:"⭐ Floridylle — Jardin botanique national",cat:"lumiere",d:"2026-12-16",d2:"2027-01-02",loc:"Meise",price:"19 €",url:"https://www.plantentuinmeise.be/en/floridylle/",star:1,desc:"Parcours nocturne de 3 km, 20+ installations, thème « monde de l'eau »."},
+{n:"Sound Healing by the Pool",cat:"bienetre",d:"2026-12-16",t:"20:00",loc:"Anvers — Massage Exchange Lounge",desc:"Bain sonore flottant."},
+{n:"Candlelight — Christmas Classics",cat:"immersif",d:"2026-12-17",loc:"Gand — De Bijloke",desc:"Concert de Noël à la bougie."},
+{n:"Enseignement Bodhicaryavatara",cat:"bouddhisme",d:"2026-12-17",t:"20:00",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",desc:"Enseignement bouddhiste."},
+{n:"⭐ Lodjong avec Lama Rinchen Palmo",cat:"bouddhisme",d:"2026-12-19",t:"10:00-17:30",loc:"Bruxelles — Kagyu Samye Dzong",url:"https://www.samye.be",star:1,desc:"Journée complète bouddhiste."},
+{n:"Winterlicht Bokrijk",cat:"lumiere",d:"2026-12-26",d2:"2026-12-30",loc:"Genk — Musée de plein air",status:"tba",url:"https://bokrijk.be/nl/winterlicht",desc:"5 soirées lumière, feu, théâtre & musique (dates à confirmer)."},
+{n:"Christmas Magic — Grottes de Han",cat:"lumiere",d:"2026-12-21",d2:"2027-01-05",loc:"Han-sur-Lesse",status:"tba",url:"https://grotte-de-han.be",desc:"Domaine décoré + visites hivernales des grottes (TBA)."},
+{n:"Christmas Garden Köln 🇩🇪",cat:"lumiere",d:"2026-11-20",d2:"2027-01-10",loc:"Cologne — Zoo",status:"tba",url:"https://www.christmas-garden.de",border:1,desc:"Parcours lumineux féérique (dates 2026 TBA)."},
+{n:"Weihnachtszauber Sankt Vith 🇧🇪 (DE)",cat:"lumiere",d:"2026-12-13",d2:"2026-12-14",loc:"Saint-Vith (Ostbelgien)",status:"tba",desc:"Magie de Noël germanophone (dates TBA)."},
+{n:"Planétarium de Bruxelles",cat:"immersif",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles — Heysel",price:"~8-10 €",url:"https://www.planetarium.be",desc:"Spectacles immersifs 360° sous dôme 8K, toute l'année."}
+];
+// ------- helpers -------
+const $=s=>document.querySelector(s);
+const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
+const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
+const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
+let fCat="all", fMonth="11", fSoon=false;
+function gcal(e){const st=pd(e.d);const en=e.d2?pd(e.d2):new Date(st.getTime()+864e5);
+ const f=x=>x.toISOString().slice(0,10).replace(/-/g,"");
+ return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.n)+"&dates="+f(st)+"/"+f(en)+"&location="+encodeURIComponent(e.loc||"Belgique")+"&details="+encodeURIComponent((e.desc||"")+" — Agenda Bien-être & Lumière Belgique")}
+function soon(e){const today=new Date(2026,9,10);const s=pd(e.d);const diff=(s-today)/864e5;return diff>=0&&diff<=7}
+function render(){
+ const list=$("#list");list.innerHTML="";
+ const evs=E.filter(e=>{
+  if(fCat!=="all"&&e.cat!==fCat)return false;
+  if(fMonth!=="all"&&pd(e.d).getMonth()+1!=+fMonth)return false;
+  if(fSoon&&!soon(e))return false;return true;
+ }).sort((a,b)=>a.d.localeCompare(b.d));
+ if(!evs.length){list.innerHTML='<div class="empty">Aucun événement pour ce filtre 🌙</div>';return}
+ let last="";
+ evs.forEach(e=>{
+  const c=CATS[e.cat];
+  if(e.d!==last){last=e.d;
+   const h=document.createElement("div");h.className="dayhead";
+   h.innerHTML='<span class="d">'+short(e.d)+'</span><span class="w">'+fmt(e.d)+(e.d2?' → '+short(e.d2):'')+'</span>';
+   list.appendChild(h);}
+  const card=document.createElement("div");card.className="card";card.style.setProperty("--accent",c.c);
+  const badges='<span class="b cat" style="background:'+c.c+'">'+c.i+" "+c.l+'</span>'+
+   (e.price?'<span class="b">'+e.price+'</span>':'')+
+   (e.price==="GRATUIT"?'':'')+
+   (e.status==="tba"?'<span class="b tba">⚠️ à confirmer</span>':'')+
+   (e.border?'<span class="b">🌍 frontière</span>':'');
+  card.innerHTML='<h3>'+e.n+(e.star?' <span class="star">⭐</span>':'')+'</h3>'+
+   '<div class="badges">'+badges+'</div>'+
+   '<div class="meta">📍 <b>'+(e.loc||"")+'</b>'+(e.t?' · 🕒 '+e.t:'')+
+   (e.desc?'<br>'+e.desc:'')+'</div>'+
+   '<div class="cardrow"><a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">📅 Ajouter à mon agenda</a>'+
+   (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">🔗 Site officiel</a>':'')+'</div>';
+  list.appendChild(card);
+ });
+}
+// chips
+const chips=[["all","Tout"],["lumiere","💡 Lumière"],["immersif","🎭 Immersif"],["bienetre","🧘 Bien-être"],["bouddhisme","☸️ Bouddhisme"],["salon","🛍️ Salons"],["esprit","🧠 Esprit & Sciences"],["spectacle","🎪 Spectacles"],["nature","🌿 Nature"]];
+const box=$("#chips");
+chips.forEach(([k,l],i)=>{const b=document.createElement("button");b.className="chip"+(i===0?" on":"");b.textContent=l;
+ b.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");fCat=k;render()};box.appendChild(b)});
+const soonChip=document.createElement("button");soonChip.className="chip";soonChip.textContent="⏳ 7 prochains jours";
+soonChip.onclick=()=>{fSoon=!fSoon;soonChip.classList.toggle("on",fSoon);render()};box.appendChild(soonChip);
+document.querySelectorAll("#months button").forEach(b=>{b.onclick=()=>{
+ document.querySelectorAll("#months button").forEach(x=>x.classList.remove("on"));b.classList.add("on");fMonth=b.dataset.m;render()}});
+$("#shareBtn").addEventListener("click",async ev=>{ev.preventDefault();
+ const data={title:"Calendrier Bien-être & Lumière — Belgique",text:"Tous les événements sensoriels, bien-être et spirituels (oct→déc 2026) :",url:location.href};
+ if(navigator.share){try{await navigator.share(data)}catch(_){}}
+ else{try{await navigator.clipboard.writeText(location.href);toast("Lien copié ! Colle-le dans WhatsApp 💬")}catch(_){toast(location.href)}}});
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
+// tip
+(function(){const tips=["Museum Night Fever le sam 17 oct : réserve vite !","GLOW Eindhoven (gratuit) avec drone show : 7-14 nov","Winter Glow Bruges dès le 20 nov","Floridylle à Meise dès le 16 déc","Lodjong bouddhiste journées complètes 24 oct & 19 déc"];
+ $("#tip").textContent=tips[Math.floor(Math.random()*tips.length)]})();
+$("#upd").textContent="10 octobre 2026";
+render();
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+</script>
+</body>
+</html>
