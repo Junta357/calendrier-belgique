@@ -441,9 +441,10 @@ $("#updBtn").addEventListener("click",async()=>{
  if("serviceWorker" in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()))}}catch(_){}
  setTimeout(()=>location.reload(),600)});
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
-(function(){const t=new Date();if(t.getMonth()===10&&t.getDate()===10){$("#tip").innerHTML="🎂 <b>Joyeux anniversaire !</b> Une année de congé et de belles choses — la fête continue ✨"}else{const tips=["Beautifica 360 : le voyage immersif au Planétarium, séances toute l'année","Museum Night Fever le sam 17 oct : réserve vite !","GLOW Eindhoven (gratuit) avec drone show : 7-14 nov","Winter Glow Bruges dès le 20 nov","Floridylle à Meise dès le 16 déc","Rando du Ninglinspo : le seul torrent de Belgique 🌊"];
+(function(){const t=new Date();if(t.getMonth()===10&&t.getDate()===10){$("#tip").innerHTML="🎂 <b>Joyeux anniversaire !</b> Une année de congé et de belles choses — la fête continue ✨"}else{const tips=["🎬 Orahala, le Sahara en grand écran : mardi 13 oct, 20h, Ecrin d'Éghezée","🎶 DINE en concert : jeudi 15 oct, Ecrin d'Éghezée","🎹 Hans Zimmer & Silvestri en symphonique : mer 11 nov, Mons","🎤 Kody « Évolué » : jeu 12 nov, Théâtre Royal de Mons","🌙 Bains de gongs nocturnes : 9 nov & 7 déc, La Tricoterie","✨ Mons en Lumières : 27-31 janvier 2027 (gratuit)","🦋 Vrouwenfestival à Oud-Heverlee : 18-22 août 2027 — à 20 min de chez toi","🌅 Edenya à Pairi Daiza : 750 papillons sous un dôme de 1 500 m²"];
  $("#tip").innerHTML=tips[Math.floor(Math.random()*tips.length)]}})();
-$("#upd").textContent="10 octobre 2026 · v20 — extension 2027 (passe de mise à jour tous les 2 mois)";
+$("#upd").textContent="10 octobre 2026 · v28 — 2026 & 2027, veille 8 canaux";
+$("#cnt").textContent=E.length;
 render();
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
