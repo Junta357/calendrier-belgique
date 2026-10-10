@@ -30,6 +30,8 @@ h1 small{display:block;font-size:.68rem;color:var(--dim);font-weight:400;margin-
 .months{display:flex;gap:4px;margin-top:8px;background:var(--card);border-radius:12px;padding:4px;border:1px solid var(--line)}
 .months button{flex:1;border:none;background:transparent;color:var(--dim);padding:8px;border-radius:9px;font-size:.8rem;cursor:pointer;font-weight:600}
 .months button.on{background:rgba(255,255,255,.1);color:var(--txt)}
+.yearrow{display:flex;gap:6px;margin-top:8px}
+#msel{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:8px 10px;font-size:.8rem;outline:none}
 main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
 .banner{margin:6px 0 14px;padding:10px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(37,99,235,.2));border:1px solid var(--line);font-size:.78rem;color:var(--txt)}
 .banner b{color:var(--gold)}
@@ -66,7 +68,7 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
 <body>
 <header>
   <div class="toprow">
-    <h1>✨ Bien-être & Lumière<small>Belgique + frontières · oct → déc 2026</small></h1>
+    <h1>✨ Bien-être & Lumière<small>Belgique + frontières · oct 2026 → déc 2027</small></h1>
     <div class="hbtns">
       <button class="btn" id="updBtn" title="Recharger la dernière version">🔄</button>
       <a class="btn primary" id="shareBtn" href="#">⤴</a>
@@ -74,11 +76,18 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
   </div>
   <input id="q" type="search" placeholder="🔎 Rechercher un événement, un lieu…" autocomplete="off">
   <div class="chips" id="chips"></div>
-  <div class="months" id="months">
-    <button data-m="10">Octobre</button>
-    <button data-m="11">Novembre</button>
-    <button data-m="12">Décembre</button>
-    <button data-m="all" class="on">Tout</button>
+  <div class="yearrow">
+    <div class="months" id="years" style="flex:0 0 auto">
+      <button data-y="2026" class="on">2026</button>
+      <button data-y="2027">2027</button>
+    </div>
+    <select id="msel">
+      <option value="all">Tous les mois</option>
+      <option value="01">janvier</option><option value="02">février</option><option value="03">mars</option>
+      <option value="04">avril</option><option value="05">mai</option><option value="06">juin</option>
+      <option value="07">juillet</option><option value="08">août</option><option value="09">septembre</option>
+      <option value="10">octobre</option><option value="11">novembre</option><option value="12">décembre</option>
+    </select>
   </div>
 </header>
 <main>
@@ -132,17 +141,17 @@ const E=[
 {n:"⭐ Dino Nights — festival de lumière",cat:"lumiere",d:"2026-10-30",d2:"2027-01-03",loc:"ZOO Planckendael (Malines)",adr:"Leuvensesteenweg 583, 2860 Muizen",url:"https://www.zooplanckendael.be",star:1,desc:"50+ dinosaures géants illuminés. Billets en ligne sur le site du zoo."},
 {n:"25ᵉ salon unique (bien-être)",cat:"salon",d:"2026-10-31",d2:"2026-11-01",loc:"Anvers",url:"https://www.out.be",status:"tba",desc:"Programme complet sur out.be."},
 // ===== PERMANENTS (toute la période) =====
-{n:"♾️ Beautifica 360",cat:"immersif",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles — Planétarium (Heysel)",adr:"Avenue de Boudewijnlaan 10, 1020 Bruxelles",url:"https://tickets.changeworlds.org",perm:1,star:1,desc:"Voyage immersif 360° dans le dôme du Planétarium (par les créateurs de l'expérience « O »). Séances régulières — dates, horaires et billets sur la billetterie officielle."},
-{n:"♾️ ARTCADE",cat:"immersif",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles",url:"https://enterartcade.be",perm:1,desc:"Expérience sensorielle permanente mêlant réalité augmentée et projections 360°, entre art et technologie."},
-{n:"♾️ Viva Frida Kahlo",cat:"immersif",d:"2026-10-10",d2:"2026-12-31",t:"60-90 min",loc:"Bruxelles",url:"https://vivafridakahlo.be",perm:1,desc:"Immersion 360° : projections monumentales, narration multilingue, son spatialisé."},
-{n:"♾️ Planétarium de Bruxelles",cat:"immersif",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles — Heysel",adr:"Avenue de Boudewijnlaan 10, 1020 Bruxelles",price:"~9 €",url:"https://www.planetarium.be",perm:1,desc:"Spectacles immersifs 360° sous dôme 8K sur l'univers, presque chaque jour. Séances & billets sur le site."},
-{n:"♾️ Totemus — chasses au trésor",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Partout en Belgique",url:"https://totemus.com/the-hunts",perm:1,desc:"263 balades ludiques guidées par un livret-aventure : forêts, villages, châteaux. Choisis ta balade sur le site."},
-{n:"♾️ Sentier des Sens — Aquascope",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Viroinval",url:"https://www.aquascope.be",perm:1,desc:"Parcours sensoriel pieds nus : sable, galets, écorces, mousse forestière."},
-{n:"♾️ Bain de forêt guidé (shinrin-yoku)",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Wallonie & Bruxelles",url:"https://www.baindeforet.be",perm:1,desc:"Marches lentes guidées en forêt : respiration, éveil des sens. Agenda des séances sur le site de référence belge."},
-{n:"♾️ Nœuds de randonnée flamands",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Flandre (réseaux knooppunten)",url:"https://www.routeyou.be",perm:1,desc:"Compose ta propre boucle de 7 à 25 km en suivant les panneaux numérotés. Itinéraires prêts sur RouteYou."},
+{n:"♾️ Beautifica 360",cat:"immersif",d:"2026-10-10",d2:"2027-12-31",loc:"Bruxelles — Planétarium (Heysel)",adr:"Avenue de Boudewijnlaan 10, 1020 Bruxelles",url:"https://tickets.changeworlds.org",perm:1,star:1,desc:"Voyage immersif 360° dans le dôme du Planétarium (par les créateurs de l'expérience « O »). Séances régulières — dates, horaires et billets sur la billetterie officielle."},
+{n:"♾️ ARTCADE",cat:"immersif",d:"2026-10-10",d2:"2027-12-31",loc:"Bruxelles",url:"https://enterartcade.be",perm:1,desc:"Expérience sensorielle permanente mêlant réalité augmentée et projections 360°, entre art et technologie."},
+{n:"♾️ Viva Frida Kahlo",cat:"immersif",d:"2026-10-10",d2:"2027-12-31",t:"60-90 min",loc:"Bruxelles",url:"https://vivafridakahlo.be",perm:1,desc:"Immersion 360° : projections monumentales, narration multilingue, son spatialisé."},
+{n:"♾️ Planétarium de Bruxelles",cat:"immersif",d:"2026-10-10",d2:"2027-12-31",loc:"Bruxelles — Heysel",adr:"Avenue de Boudewijnlaan 10, 1020 Bruxelles",price:"~9 €",url:"https://www.planetarium.be",perm:1,desc:"Spectacles immersifs 360° sous dôme 8K sur l'univers, presque chaque jour. Séances & billets sur le site."},
+{n:"♾️ Totemus — chasses au trésor",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Partout en Belgique",url:"https://totemus.com/the-hunts",perm:1,desc:"263 balades ludiques guidées par un livret-aventure : forêts, villages, châteaux. Choisis ta balade sur le site."},
+{n:"♾️ Sentier des Sens — Aquascope",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Viroinval",url:"https://www.aquascope.be",perm:1,desc:"Parcours sensoriel pieds nus : sable, galets, écorces, mousse forestière."},
+{n:"♾️ Bain de forêt guidé (shinrin-yoku)",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Wallonie & Bruxelles",url:"https://www.baindeforet.be",perm:1,desc:"Marches lentes guidées en forêt : respiration, éveil des sens. Agenda des séances sur le site de référence belge."},
+{n:"♾️ Nœuds de randonnée flamands",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Flandre (réseaux knooppunten)",url:"https://www.routeyou.be",perm:1,desc:"Compose ta propre boucle de 7 à 25 km en suivant les panneaux numérotés. Itinéraires prêts sur RouteYou."},
 {n:"⭐ YAIMA — concert sacré",cat:"spectacle",d:"2026-10-23",t:"20:00-22:00",loc:"Anvers",url:"https://hipsy.be",star:1,desc:"Le duo culte de world/music sacrée YAIMA en concert (Soul Happenings). Voyage sonore et émotionnel. Billets via Hipsy."},
 {n:"The Wanderer — concert",cat:"spectacle",d:"2026-10-25",t:"20:30-22:00",loc:"Leuven",url:"https://hipsy.be",desc:"Concert immersif présenté par Soul Happenings. Billets via Hipsy."},
-{n:"♾️ Eki Vibre — bains de gongs",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",loc:"Sud de Bruxelles, près de La Hulpe",url:"https://eki-vibre.com",perm:1,desc:"Bains de gongs réguliers à deux pas de Tourinnes-la-Grosse — dates et réservation sur le site."},
+{n:"♾️ Eki Vibre — bains de gongs",cat:"bienetre",d:"2026-10-10",d2:"2027-12-31",loc:"Sud de Bruxelles, près de La Hulpe",url:"https://eki-vibre.com",perm:1,desc:"Bains de gongs réguliers à deux pas de Tourinnes-la-Grosse — dates et réservation sur le site."},
 // ===== NOVEMBRE =====
 {n:"Salon « Les Chemins du Nirvana »",cat:"salon",d:"2026-11-01",t:"09:30-17:00",loc:"Courcelles — salle Miaucourt",adr:"Rue Paul Pastur 115, Courcelles",price:"1 €",url:"https://lespraticiens.be",status:"tba",desc:"Bien-être & arts divinatoires."},
 {n:"Holosomatic® Breathwork — Heart Opening",cat:"bienetre",d:"2026-11-01",t:"19:00",loc:"Gand",url:"https://innercamp.com",desc:"Respiration & ouverture du cœur. Infos & billets sur le site."},
@@ -177,11 +186,11 @@ const E=[
 {n:"Magical Maastricht 🇳🇱",cat:"lumiere",d:"2026-11-27",d2:"2026-12-27",loc:"Maastricht",url:"https://www.visitmaastricht.com",border:1,desc:"Hiver féérique : lumières, marché, ambiance."},
 {n:"Conférence Albert Moukheiber — Neuromania",cat:"esprit",d:"2026-11-30",t:"19:00",loc:"Bruxelles + en ligne (Emergences)",price:"17,50 €",url:"https://emergences.org",desc:"Déjouer les mythes sur le cerveau. Billetterie sur le site."},
 {n:"Marché de Noël de Lille 🇫🇷",cat:"lumiere",d:"2026-11-18",d2:"2026-12-30",loc:"Lille — Place Rihour",url:"https://en.lilletourism.com",border:1,desc:"Grande roue, ~90 chalets, ville illuminée. Infos sur le site de l'office de tourisme."},
-{n:"♾️ Méditations du dimanche — Serendip Spa",cat:"bouddhisme",d:"2026-11-01",d2:"2026-12-20",t:"dim. 10:30-11:30",loc:"Bruxelles — Place Stéphanie 18",price:"libre",url:"https://www.serendipspa.com/special-events",perm:1,star:1,desc:"Méditation guidée par Shaku Jinsen, prêtre bouddhiste Shingon, chaque dimanche. Participation libre. Rituel de bénédiction le dernier dimanche du mois."},
+{n:"♾️ Méditations du dimanche — Serendip Spa",cat:"bouddhisme",d:"2026-11-01",d2:"2027-12-31",t:"dim. 10:30-11:30",loc:"Bruxelles — Place Stéphanie 18",price:"libre",url:"https://www.serendipspa.com/special-events",perm:1,star:1,desc:"Méditation guidée par Shaku Jinsen, prêtre bouddhiste Shingon, chaque dimanche. Participation libre. Rituel de bénédiction le dernier dimanche du mois."},
 {n:"Méditation & Rituel de bénédiction",cat:"bouddhisme",d:"2026-11-29",t:"10:30-13:30",loc:"Bruxelles — Serendip Spa",price:"libre",url:"https://www.serendipspa.com/special-events",desc:"Dimanche spécial : méditation prolongée + rituel de bénédiction avec Shaku Jinsen."},
 {n:"Méditation & Rituel de bénédiction",cat:"bouddhisme",d:"2026-12-20",t:"10:30-13:30",loc:"Bruxelles — Serendip Spa",price:"libre",url:"https://www.serendipspa.com/special-events",desc:"Édition de décembre : méditation prolongée + rituel de bénédiction, avant Noël."},
 {n:"Ashtanga — Full Primary Series (part. 2 & 3)",cat:"bienetre",d:"2026-11-14",t:"13:30-15:30",loc:"Bruxelles — Serendip Spa",price:"40 €",url:"https://www.serendipspa.com/special-events",desc:"Atelier pose par pose certifié Yoga Alliance (part. 2 le 14 nov, part. 3 le 5 déc). Réservation sur le site."},
-{n:"⭐ Louvain-la-Neige",cat:"lumiere",d:"2026-11-27",d2:"2026-12-20",loc:"Louvain-la-Neuve",url:"https://www.louvainlaneige.be",star:1,desc:"Un des plus grands marchés de Noël de Wallonie : jusqu'à 180 exposants sur le lac gelé. Programme sur le site."},
+{n:"⭐ Louvain-la-Neige",cat:"lumiere",d:"2026-11-27",d2:"2027-12-31",loc:"Louvain-la-Neuve",url:"https://www.louvainlaneige.be",star:1,desc:"Un des plus grands marchés de Noël de Wallonie : jusqu'à 180 exposants sur le lac gelé. Programme sur le site."},
 {n:"Winterlights Luxembourg 🇱🇺",cat:"lumiere",d:"2026-11-20",d2:"2027-01-03",t:"~11:00-21:00",loc:"Ville de Luxembourg (plusieurs places)",url:"https://www.vdl.lu/visiting/winterlights-0",border:1,desc:"Festival des lumières + marchés sur Place d'Armes, Guillaume II, Constitution. Programme officiel sur vdl.lu."},
 {n:"Trierer Weihnachtsmarkt 🇩🇪",cat:"lumiere",d:"2026-11-20",d2:"2026-12-22",loc:"Trèves — Domfreihof & Hauptmarkt",url:"https://www.trier-info.de",border:1,desc:"Marché de Noël devant la cathédrale (46ᵉ éd., fermé le 22 nov). Un des plus beaux d'Allemagne."},
 {n:"Weihnachtsmarkt Düsseldorf 🇩🇪",cat:"lumiere",d:"2026-11-19",d2:"2026-12-30",loc:"Düsseldorf — Altstadt",url:"https://www.visitduesseldorf.de",border:1,desc:"Marchés répartis dans la vieille ville, illuminations magiques."},
@@ -220,28 +229,48 @@ const E=[
 {n:"🎬 Met Opera Live — Carmen (Bizet)",cat:"cinema",d:"2026-11-14",loc:"Pathé Belgique (cinémas)",url:"https://www.pathelive.com",desc:"Diffusion internationale du Met Live in HD. Un grand spectacle émotionnel sur écran géant."},
 {n:"🎬 Met Opera Live — Samson et Dalila (Saint-Saëns)",cat:"cinema",d:"2026-12-05",loc:"Pathé Belgique (cinémas)",url:"https://www.pathelive.com",desc:"Diffusion internationale du Met Live in HD."},
 {n:"🎬 Royal Opera House — Casse-Noisette",cat:"cinema",d:"2026-12-15",d2:"2027-01-05",loc:"Pathé Belgique (cinémas)",url:"https://www.rbo.org.uk",status:"tba",desc:"Le ballet de Noël de la saison ROH 2026-27, diffusé au cinéma (dates belges à confirmer sur pathe.be)."},
-{n:"♾️ Pathé Live — opéras, ballets & spectacles au cinéma",cat:"cinema",d:"2026-10-10",d2:"2026-12-31",loc:"Pathé Belgique",url:"https://www.pathelive.com",perm:1,desc:"Opéras, ballets, concerts et documentaires événementiels diffusés dans ton Pathé. Nouveau programme chaque lundi soir sur pathe.be/evenements."},
+{n:"♾️ Pathé Live — opéras, ballets & spectacles au cinéma",cat:"cinema",d:"2026-10-10",d2:"2027-12-31",loc:"Pathé Belgique",url:"https://www.pathelive.com",perm:1,desc:"Opéras, ballets, concerts et documentaires événementiels diffusés dans ton Pathé. Nouveau programme chaque lundi soir sur pathe.be/evenements."},
 {n:"Village de Noël du Rouge-Cloître",cat:"salon",d:"2026-12-13",d2:"2026-12-14",t:"11:00-18:00",loc:"Bruxelles — Auderghem, Rouge-Cloître",adr:"Rue du Rouge-Cloître, 1160 Auderghem",url:"https://www.familinbruxelles.com",desc:"Petit marché de village : 50 stands d'artistes, artisans et créateurs dans le site abbatial."},
-{n:"♾️ Soirées Chandelles — Thermes de Spa",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",t:"17:00-22:00",loc:"Spa",url:"https://www.thermesdespa.com",perm:1,status:"tba",desc:"Bains immersifs à la lueur des chandelles dès la tombée de la nuit — dates des soirées de décembre publiées sur le site."},
-{n:"♾️ Mondorf Domaine Thermal 🇱🇺",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",loc:"Mondorf-les-Bains (Luxembourg)",url:"https://www.mondorf.lu",perm:1,border:1,desc:"Grand domaine bien-être (thermes, sauna, jardins) — offre spéciale valable du 1ᵉʳ oct au 31 déc 2026."},
-{n:"♾️ Ateliers artisans & dégustations — Wecandoo",cat:"bienetre",d:"2026-10-10",d2:"2026-12-31",loc:"Bruxelles & grandes villes",url:"https://wecandoo.be",perm:1,desc:"Réserve un atelier chez un artisan : chocolat, poterie, parfum, dégustation de vins (~45 €+) — cadeau parfait entre 40 et 50 ans qui aiment la vie !"},
+{n:"♾️ Soirées Chandelles — Thermes de Spa",cat:"bienetre",d:"2026-10-10",d2:"2027-12-31",t:"17:00-22:00",loc:"Spa",url:"https://www.thermesdespa.com",perm:1,status:"tba",desc:"Bains immersifs à la lueur des chandelles dès la tombée de la nuit — dates des soirées de décembre publiées sur le site."},
+{n:"♾️ Mondorf Domaine Thermal 🇱🇺",cat:"bienetre",d:"2026-10-10",d2:"2027-12-31",loc:"Mondorf-les-Bains (Luxembourg)",url:"https://www.mondorf.lu",perm:1,border:1,desc:"Grand domaine bien-être (thermes, sauna, jardins) — offre spéciale valable du 1ᵉʳ oct au 31 déc 2026."},
+{n:"♾️ Ateliers artisans & dégustations — Wecandoo",cat:"bienetre",d:"2026-10-10",d2:"2027-12-31",loc:"Bruxelles & grandes villes",url:"https://wecandoo.be",perm:1,desc:"Réserve un atelier chez un artisan : chocolat, poterie, parfum, dégustation de vins (~45 €+) — cadeau parfait entre 40 et 50 ans qui aiment la vie !"},
 {n:"🦋 Papillons en liberté — Observatoire du Monde des Plantes",cat:"nature",d:"2026-07-04",d2:"2026-10-25",t:"mar-dim 10:00-17:00",loc:"Liège — Cointe",adr:"Avenue de l'Observatoire 3B, 4031 Liège",price:"14 €",url:"https://www.musees.uliege.be",status:"tba",star:1,desc:"Des centaines de papillons tropicaux en liberté dans la serre (avec le musée Hexapoda). FIN IMMINENTE : les sources varient entre le 18 et le 27 octobre — foncez avant la fin !"},
 {n:"ANIMALS — bestiaire contemplatif",cat:"nature",d:"2026-10-19",d2:"2027-02-19",t:"11:00-18:00",loc:"Liège — Centre culturel Les Chiroux",adr:"8 Place des Carmes, 4000 Liège",price:"GRATUIT",url:"https://chiroux.be/evenement/animals/",desc:"Première exposition inspirée des Animal Books de Lous Martens, dans le cadre de la Biennale de l'Image Possible. Vernissage sam 17 oct à 17h. Fermée 24-25 & 31 déc."},
-{n:"♾️ Aquarium-Muséum de Liège",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"mar-ven 9h-17h · wd 10h-18h",loc:"Liège",adr:"Quai Van Beneden 22, 4020 Liège",url:"https://www.365.be",perm:1,desc:"46 aquariums : Grande Barrière, Amazonie, récifs… Gratuit le 1ᵉʳ dimanche du mois (sur réservation). Musée de zoologie en travaux jusqu'à fin 2027."},
-{n:"♾️ Plant Palace — serres tropicales de Meise",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Meise — Jardin botanique national",adr:"Nieuwelaan 38, 1860 Meise",price:"~15 €",url:"https://www.plantentuinmeise.be",perm:1,desc:"10 000 espèces tropicales : orchidées, palmiers, cactus. La bulle chaude parfaite contre le gris de l'hiver."},
-{n:"⭐♾️ Edenya — Jardin des Papillons géant (dôme 1 500 m²)",cat:"nature",d:"2026-10-10",d2:"2027-01-04",loc:"Pairi Daiza, Brugelette",adr:"Domaine de Cambron, 7940 Brugelette",url:"https://www.pairidaiza.eu/edenya",perm:1,star:1,desc:"~750 papillons en liberté totale sous un dôme de 1 500 m² — l'un des plus grands d'Europe — + serre tropicale XXL, passerelle suspendue et grottes subaquatiques. Ouvert depuis février 2026, visitable aussi pendant le Christmas Time !"},
+{n:"♾️ Aquarium-Muséum de Liège",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"mar-ven 9h-17h · wd 10h-18h",loc:"Liège",adr:"Quai Van Beneden 22, 4020 Liège",url:"https://www.365.be",perm:1,desc:"46 aquariums : Grande Barrière, Amazonie, récifs… Gratuit le 1ᵉʳ dimanche du mois (sur réservation). Musée de zoologie en travaux jusqu'à fin 2027."},
+{n:"♾️ Plant Palace — serres tropicales de Meise",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Meise — Jardin botanique national",adr:"Nieuwelaan 38, 1860 Meise",price:"~15 €",url:"https://www.plantentuinmeise.be",perm:1,desc:"10 000 espèces tropicales : orchidées, palmiers, cactus. La bulle chaude parfaite contre le gris de l'hiver."},
+{n:"⭐♾️ Edenya — Jardin des Papillons géant (dôme 1 500 m²)",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Pairi Daiza, Brugelette",adr:"Domaine de Cambron, 7940 Brugelette",url:"https://www.pairidaiza.eu/edenya",perm:1,star:1,desc:"~750 papillons en liberté totale sous un dôme de 1 500 m² — l'un des plus grands d'Europe — + serre tropicale XXL, passerelle suspendue et grottes subaquatiques. Ouvert depuis février 2026, visitable aussi pendant le Christmas Time !"},
 {n:"🦋 Jardin des Papillons de Grevenmacher 🇱🇺",cat:"nature",d:"2026-10-10",d2:"2026-10-31",t:"tous les jours 09:00-17:00",loc:"Grevenmacher (Luxembourg, sur la Moselle)",url:"https://www.naturwanderpark.eu",border:1,desc:"Serre à papillons exotiques du domaine Bernard-Massard. SAISON FINISSANTE : ouvert jusqu'au 31 octobre seulement — dernière chance avant mai 2027 !"},
 {n:"🦋 Vlindorado 🇳🇱",cat:"nature",d:"2026-10-10",d2:"2026-11-30",t:"ma-sa 10:00-17:00 · dim 11:00-17:00",loc:"Waarland (Pays-Bas, Noord-Holland)",url:"https://www.vlindorado.nl",border:1,desc:"Grande serre à papillons néerlandaise. Ouvert jusqu'au 30 novembre 2026 (horaires réduits du 25 oct au 14 nov), puis fermeture hivernale jusqu'à mi-février 2027."},
-{n:"♾️ Hexapoda — l'insectarium de Waremme",cat:"nature",d:"2026-10-10",d2:"2026-12-31",loc:"Waremme (Liège)",adr:"Rue de Grand-Axhe 45E, 4300 Waremme",price:"6 €",url:"https://hexapoda.be",perm:1,desc:"Le musée des insectes de Wallonie (partenaire de l'expo papillons de Liège) : parcours ludique + jardin."},
+{n:"♾️ Hexapoda — l'insectarium de Waremme",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Waremme (Liège)",adr:"Rue de Grand-Axhe 45E, 4300 Waremme",price:"6 €",url:"https://hexapoda.be",perm:1,desc:"Le musée des insectes de Wallonie (partenaire de l'expo papillons de Liège) : parcours ludique + jardin."},
 {n:"🎬 Met Opera — La Flûte enchantée (Holiday Encore)",cat:"cinema",d:"2026-12-12",d2:"2027-01-02",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"La version féérique des fêtes de Mozart au cinéma — séances dont le mercredi 30 décembre à 12h00. Horaires belges sur pathe.be."},
 {n:"Philip Glass — Extended Music Collective (BOZAR)",cat:"esprit",d:"2026-12-06",t:"11:00",loc:"Bruxelles — BOZAR, Grande salle",url:"https://www.bozar.be",desc:"Matinée contemplative autour de Philip Glass : musique minimaliste en très grand format."},
+// ===== 2027 =====
+{n:"⭐ Mons en Lumières",cat:"lumiere",d:"2027-01-27",d2:"2027-01-31",t:"18:00-minuit",loc:"Mons — centre historique",url:"https://www.mons.be",star:1,desc:"4ᵉ édition confirmée : ~3 km de parcours gratuit, 17 installations lumineuses d'artistes."},
+{n:"⭐ Gent Lichtfestival 🇧🇪 (NL)",cat:"lumiere",d:"2027-01-28",d2:"2027-02-01",t:"19:00-minuit",loc:"Gand — centre",price:"GRATUIT",url:"https://lichtfestival.stad.gent",star:1,status:"tba",desc:"7ᵉ édition (tous les 3 ans !) : le plus grand festival lumière de Flandre. Dates exactes fin janvier-début février à confirmer."},
+{n:"🎬 Met Opera — La Fanciulla del West (Puccini)",cat:"cinema",d:"2027-01-23",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"Live in HD, saison des 20 ans — rediffusion mercredi 27 janvier."},
+{n:"⭐ Bright Brussels — Festival of Lights",cat:"lumiere",d:"2027-02-11",d2:"2027-02-14",t:"19:00-23:00",loc:"Bruxelles — centre historique",price:"GRATUIT",url:"https://visit.brussels",star:1,desc:"20+ installations d'artistes belges et internationaux, 4 soirées. Dates 2027 annoncées."},
+{n:"🦋 Réouverture Vlindorado 🇳🇱",cat:"nature",d:"2027-02-14",d2:"2027-11-30",loc:"Waarland (Pays-Bas)",url:"https://www.vlindorado.nl",status:"tba",border:1,desc:"Réouverture de la saison 2027 (mi-février → fin novembre)."},
+{n:"JEMA — Journées Européennes des Métiers d'Art",cat:"salon",d:"2027-04-02",d2:"2027-04-05",loc:"Toute la Belgique — ateliers d'artisans",url:"https://www.journeesdesmetiersdart.fr/europe/belgique-belgium",status:"tba",desc:"Portes ouvertes des ateliers : verrerie, dentelle, joaillerie… (début avril, dates à confirmer)."},
+{n:"Floralia Brussels — Grand-Bigard",cat:"nature",d:"2027-04-10",d2:"2027-05-10",loc:"Grand-Bigard — château",url:"https://floraliabrussels.be",status:"tba",desc:"Des millions de fleurs dans le parc du château (saison printemps)."},
+{n:"🦋 Réouverture du Jardin des Papillons de Grevenmacher 🇱🇺",cat:"nature",d:"2027-05-01",d2:"2027-10-31",loc:"Grevenmacher (Luxembourg)",url:"https://www.naturwanderpark.eu",status:"tba",border:1,desc:"La serre à papillons rouvre pour la saison (mai → fin octobre)."},
+{n:"Festival international du feu d'artifice — Knokke-Heist",cat:"lumiere",d:"2027-08-21",d2:"2027-08-29",loc:"Knokke-Heist — plage",url:"https://www.knokke-heist.be",status:"tba",desc:"Festival international de feux d'artifice sur la plage (fin août)."},
+{n:"Journées du Patrimoine Wallonie-Bruxelles",cat:"salon",d:"2027-09-11",d2:"2027-09-12",loc:"Partout en Wallonie & Bruxelles",price:"GRATUIT",url:"https://www.journeesdupatrimoine.be",status:"tba",desc:"Des milliers de lieux ouverts gratuitement : châteaux, ateliers, abbayes."},
+{n:"Festi'Valériane — grand salon bio",cat:"salon",d:"2027-09-11",d2:"2027-09-13",loc:"Libramont",url:"https://www.festivaleriane.be",status:"tba",desc:"Le grand salon bio/bien-être de Wallonie (mi-septembre)."},
+{n:"⭐ Museum Night Fever 2027",cat:"immersif",d:"2027-10-17",t:"19:00-01:00",loc:"Bruxelles — les musées",url:"https://www.museumnightfever.be",status:"tba",star:1,desc:"La nuit immersive des musées bruxellois (3ᵉ samedi d'octobre, à confirmer)."},
+{n:"Salons du bien-être d'automne (LLN, Floreffe, Colfontaine…)",cat:"salon",d:"2027-10-16",d2:"2027-10-18",loc:"Brabant wallon & Hainaut",url:"https://lespraticiens.be",status:"tba",desc:"Les salons d'automne reviennent chaque mi-octobre : LLN, Floreffe, Colfontaine, Fleurus…"},
+{n:"⭐ Winter Glow Bruges 2027-28",cat:"lumiere",d:"2027-11-20",d2:"2028-02-14",loc:"Bruges",url:"https://www.visitbruges.be/winter-glow",status:"tba",desc:"Nouveau parcours de lumière (3ᵉ week-end de novembre, à confirmer)."},
+{n:"Les villages de Noël s'allument partout",cat:"lumiere",d:"2027-11-20",d2:"2027-11-30",loc:"Partout en Belgique",status:"tba",desc:"Mi-novembre : Durbuy, Annevoie, Hasselt, Liège, Bruxelles, Mons, Beauvechain… les grandes illuminations reviennent."},
+{n:"⭐ Floridylle — Meise 2027-28",cat:"lumiere",d:"2027-12-16",d2:"2028-01-02",loc:"Meise — Jardin botanique",url:"https://www.plantentuinmeise.be",status:"tba",desc:"Le parcours lumière de 3 km revient à la mi-décembre."},
+{n:"Winterlicht Bokrijk 2027",cat:"lumiere",d:"2027-12-26",d2:"2027-12-30",loc:"Genk — Musée de plein air",url:"https://bokrijk.be/nl/winterlicht",status:"tba",desc:"5 soirées lumière, feu et musique entre Noël et Nouvel An (à confirmer)."},
+{n:"Dino Nights — Planckendael 2027-28",cat:"lumiere",d:"2027-10-30",d2:"2028-01-03",loc:"ZOO Planckendael (Malines)",url:"https://www.zooplanckendael.be",status:"tba",desc:"Le festival lumière du zoo revient (fin oct → début janv)."},
+{n:"Christmas Time — Pairi Daiza 2027-28",cat:"lumiere",d:"2027-11-27",d2:"2028-01-03",loc:"Brugelette",url:"https://www.pairidaiza.eu",status:"tba",desc:"Illuminations féériques + Edenya (dôme à papillons) ouverts."},
 // ===== RANDOS 7-25 KM (toute la période) =====
-{n:"♾️ Rando : Vallon du Ninglinspo",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7-12 km",loc:"Aywaille (Ardenne)",url:"https://www.gael.be",perm:1,desc:"Le seul « torrent » de Belgique : ruisseaux, cascades, rochers. Itinéraires détaillés sur Gael.be."},
-{n:"♾️ Rando : la Hoëgne",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7,5-14 km",loc:"Jalhay / Cokaifagne (Hautes Fagnes)",url:"https://visitwallonia.be",perm:1,desc:"Ruisseau romantique et sauvage né dans les fagnes, ponts de rondins, fagne de Malchamps. Fiche balade sur VisitWallonia."},
-{n:"♾️ Rando : Hautes Fagnes — Baraque Michel",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"10-25 km",loc:"Hautes Fagnes–Eifel",url:"https://visitwallonia.be",perm:1,desc:"Grandes boucles dans les landes et tourbières : le grand air absolu. Trace ton itinéraire via VisitWallonia ou AllTrails."},
-{n:"♾️ Rando : Tour du lac de Nisramont",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"~14 km",loc:"La Roche-en-Ardenne",url:"https://www.gael.be",perm:1,desc:"Boucle paisible autour du lac, forêts et points de vue. Itinéraire sur Gael.be."},
-{n:"♾️ Rando : Balades de rêve des Cantons de l'Est 🇧🇪 (DE)",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"9-15 km",loc:"Ostbelgien (Burg-Reuland, Heppenbach…)",url:"https://www.ostbelgien.eu",perm:1,desc:"Boucles balisées « Traumwanderungen » dans les paysages germanophones. Descriptions & cartes sur ostbelgien.eu."},
-{n:"♾️ Rando : Forêt de Soignes",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7-20 km",loc:"Bruxelles / Watermael-Boitsfort",url:"https://foret-de-soignes.brussels",perm:1,desc:"Hêtraies majestueuses à 15 min de Bruxelles : boucles de 7 à 20 km au choix. Itinéraires sur le site de la forêt."}
+{n:"♾️ Rando : Vallon du Ninglinspo",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"7-12 km",loc:"Aywaille (Ardenne)",url:"https://www.gael.be",perm:1,desc:"Le seul « torrent » de Belgique : ruisseaux, cascades, rochers. Itinéraires détaillés sur Gael.be."},
+{n:"♾️ Rando : la Hoëgne",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"7,5-14 km",loc:"Jalhay / Cokaifagne (Hautes Fagnes)",url:"https://visitwallonia.be",perm:1,desc:"Ruisseau romantique et sauvage né dans les fagnes, ponts de rondins, fagne de Malchamps. Fiche balade sur VisitWallonia."},
+{n:"♾️ Rando : Hautes Fagnes — Baraque Michel",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"10-25 km",loc:"Hautes Fagnes–Eifel",url:"https://visitwallonia.be",perm:1,desc:"Grandes boucles dans les landes et tourbières : le grand air absolu. Trace ton itinéraire via VisitWallonia ou AllTrails."},
+{n:"♾️ Rando : Tour du lac de Nisramont",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"~14 km",loc:"La Roche-en-Ardenne",url:"https://www.gael.be",perm:1,desc:"Boucle paisible autour du lac, forêts et points de vue. Itinéraire sur Gael.be."},
+{n:"♾️ Rando : Balades de rêve des Cantons de l'Est 🇧🇪 (DE)",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"9-15 km",loc:"Ostbelgien (Burg-Reuland, Heppenbach…)",url:"https://www.ostbelgien.eu",perm:1,desc:"Boucles balisées « Traumwanderungen » dans les paysages germanophones. Descriptions & cartes sur ostbelgien.eu."},
+{n:"♾️ Rando : Forêt de Soignes",cat:"nature",d:"2026-10-10",d2:"2027-12-31",t:"7-20 km",loc:"Bruxelles / Watermael-Boitsfort",url:"https://foret-de-soignes.brussels",perm:1,desc:"Hêtraies majestueuses à 15 min de Bruxelles : boucles de 7 à 20 km au choix. Itinéraires sur le site de la forêt."}
 ];
 // ------- helpers -------
 const $=s=>document.querySelector(s);
@@ -250,7 +279,7 @@ const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
 const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
 const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
-let fCat="all", fMonth="all", fSoon=false, fQ="", fFree=false, fWknd=false;
+let fCat="all", fYear="2026", fMonth="all", fSoon=false, fQ="", fFree=false, fWknd=false;
 function isWeekend(e){const s=pd(e.d),en=endOf(e);const t=new Date(TODAY);const day=t.getDay();const sat=new Date(t);sat.setDate(t.getDate()+((6-day)+7)%7-(day===0?7:0));const sun=new Date(sat);sun.setDate(sat.getDate()+1);return (s<=sat&&en>=sat)||(s<=sun&&en>=sun)}
 const TODAY=new Date(); TODAY.setHours(0,0,0,0);
 const endOf=e=>pd(e.d2||e.d);
@@ -261,7 +290,7 @@ function gcal(e){const st=pd(e.d);const en=e.d2?pd(e.d2):new Date(st.getTime()+8
 function soon(e){const s=pd(e.d);const diff=(s-TODAY)/864e5;return diff>=-1&&diff<=7}
 const PL_TABLE=[
  ["holotropic",3],["tantra essence",3],["edenya",3],["christmas time — pairi daiza",3],
- ["candlelight",2],["met opera",2],["casse-noisette",2],["pathé live",2],["christmas garden",2],
+ ["candlelight",2],["museum night fever",2],["met opera",2],["casse-noisette",2],["pathé live",2],["christmas garden",2],
  ["de grote schijn",2],["dino nights",2],["luminate",2],["winter glow",2],["bokrijk",2],["grottes de han",2],
  ["valkenburg",2],["grevenmacher",2],["vlindorado",2],["eki vibre",2],["monthly reset",2],["holosomatic",2],
  ["bain de forêt",2],["yaima",2],["the wanderer",2],["sound healing by the pool",2],["wecandoo",2],
@@ -314,7 +343,7 @@ function render(){
  const list=$("#list");list.innerHTML="";
  const all=E.filter(e=>{
   if(fCat!=="all"&&e.cat!==fCat)return false;
-  if(fMonth!=="all"){const mS=new Date(2026,+fMonth-1,1),mE=new Date(2026,+fMonth,0);
+  if(fMonth!=="all"){const mS=new Date(+fYear,+fMonth-1,1),mE=new Date(+fYear,+fMonth,0);
    if(pd(e.d)>mE||endOf(e)<mS)return false;}
   if(fSoon&&!soon(e))return false;
   if(fQ){const q=fQ.toLowerCase();if(!(e.n+" "+e.loc+" "+(e.desc||"")).toLowerCase().includes(q))return false}
@@ -375,8 +404,9 @@ soonChip.onclick=()=>{fSoon=!fSoon;soonChip.classList.toggle("on",fSoon);render(
 [["🆓 Gratuit",()=>fFree,()=>{fFree=!fFree}],["🎉 Ce week-end",()=>fWknd,()=>{fWknd=!fWknd}]].forEach(([l,g,cl])=>{
  const b=document.createElement("button");b.className="chip";b.textContent=l;
  b.onclick=()=>{cl();b.classList.toggle("on",g());render()};box.appendChild(b)});
-document.querySelectorAll("#months button").forEach(b=>{b.onclick=()=>{
- document.querySelectorAll("#months button").forEach(x=>x.classList.remove("on"));b.classList.add("on");fMonth=b.dataset.m;render()}});
+document.querySelectorAll("#years button").forEach(b=>{b.onclick=()=>{
+ document.querySelectorAll("#years button").forEach(x=>x.classList.remove("on"));b.classList.add("on");fYear=b.dataset.y;render()}});
+$("#msel").addEventListener("change",ev=>{fMonth=ev.target.value;render()});
 $("#q").addEventListener("input",ev=>{fQ=ev.target.value.trim();render()});
 $("#shareBtn").addEventListener("click",async ev=>{ev.preventDefault();
  const data={title:"Calendrier Bien-être & Lumière — Belgique",text:"Tous les événements sensoriels, bien-être et spirituels (oct→déc 2026) :",url:location.href};
@@ -390,7 +420,7 @@ $("#updBtn").addEventListener("click",async()=>{
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
 (function(){const tips=["Beautifica 360 : le voyage immersif au Planétarium, séances toute l'année","Museum Night Fever le sam 17 oct : réserve vite !","GLOW Eindhoven (gratuit) avec drone show : 7-14 nov","Winter Glow Bruges dès le 20 nov","Floridylle à Meise dès le 16 déc","Rando du Ninglinspo : le seul torrent de Belgique 🌊"];
  $("#tip").textContent=tips[Math.floor(Math.random()*tips.length)]})();
-$("#upd").textContent="10 octobre 2026 · v4 (liens infos + permanents + randos)";
+$("#upd").textContent="10 octobre 2026 · v20 — extension 2027 (passe de mise à jour tous les 2 mois)";
 render();
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
