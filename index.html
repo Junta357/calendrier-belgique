@@ -21,6 +21,8 @@ h1 small{display:block;font-size:.68rem;color:var(--dim);font-weight:400;margin-
 .hbtns{display:flex;gap:6px}
 .btn{border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:999px;padding:7px 12px;font-size:.78rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .btn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);border:none;font-weight:600}
+#q{width:100%;margin-top:9px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 13px;color:var(--txt);font-size:.85rem;outline:none}
+#q::placeholder{color:var(--dim)}
 .chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--dim);border-radius:999px;padding:6px 11px;font-size:.74rem;cursor:pointer;white-space:nowrap}
@@ -69,6 +71,7 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
       <a class="btn primary" id="shareBtn" href="#">⤴</a>
     </div>
   </div>
+  <input id="q" type="search" placeholder="🔎 Rechercher un événement, un lieu…" autocomplete="off">
   <div class="chips" id="chips"></div>
   <div class="months" id="months">
     <button data-m="10">Octobre</button>
@@ -166,7 +169,7 @@ const E=[
 {n:"Putteke Winter — Halve Maan",cat:"lumiere",d:"2026-11-28",loc:"Diest — domaine Halve Maan",url:"https://vlaamsbrabant.be",status:"tba",desc:"Shows LED, contes, spectacles de feu (clôturé par 150 drones en 2023). Programme à venir sur le site."},
 {n:"Christmas Time — Pairi Daiza",cat:"lumiere",d:"2026-11-29",d2:"2027-01-04",loc:"Brugelette",adr:"Domaine de Cambron, 7940 Brugelette",url:"https://www.pairidaiza.eu",status:"tba",desc:"Illuminations féériques sur 75 ha + train de Noël — et le dôme à papillons Edenya est ouvert ! Dates & billets sur le site."},
 {n:"Atelier « Eveiller la joie »",cat:"esprit",d:"2026-11-23",t:"19:00-20:30",loc:"Etterbeek (Emergences)",price:"5 €",url:"https://emergences.org",desc:"Méditation & joie."},
-{n:"⭐ Plaisirs d'Hiver + Son & lumière Grand-Place",cat:"lumiere",d:"2026-11-27",d2:"2027-01-03",loc:"Bruxelles — centre",url:"https://www.brussels.be",star:1,desc:"Grand marché + spectacle son & lumière de la Grand-Place chaque soir 17h-22h (sauf 24 & 31 déc). Programme complet sur le site de la Ville."},
+{n:"⭐ Plaisirs d'Hiver + Son & lumière Grand-Place",cat:"lumiere",d:"2026-11-27",d2:"2027-01-03",loc:"Bruxelles — centre",url:"https://plaisirsdhiver.be",star:1,desc:"Grand marché + spectacle son & lumière de la Grand-Place chaque soir 17h-22h (sauf 24 & 31 déc). Programme complet sur le site officiel."},
 {n:"⭐ Village de Noël de Liège",cat:"lumiere",d:"2026-11-27",d2:"2026-12-30",loc:"Liège — Pl. Saint-Lambert",url:"https://www.visitezliege.be/offre/le-village-de-noel",desc:"150+ chalets, pyramide géante, grande roue. Horaires sur le site."},
 {n:"Lodjong avec Lama Rinchen Palmo",cat:"bouddhisme",d:"2026-11-28",t:"10:00-17:30",loc:"Beaumont — BMT",url:"https://www.samye.be",desc:"Journée de pratique bouddhiste."},
 {n:"Salon NaturaBio 🇫🇷",cat:"salon",d:"2026-11-27",d2:"2026-11-29",t:"10:00-19:00",loc:"Lille Grand Palais",adr:"1 Boulevard des Cités Unies, 59800 Lille",url:"https://www.nsalons.com",border:1,desc:"215 exposants bio & bien-être + ateliers. Billetterie & programme sur le site."},
@@ -192,7 +195,7 @@ const E=[
 {n:"Enseignement Bodhicaryavatara",cat:"bouddhisme",d:"2026-12-03",t:"20:00",loc:"Beaumont — BMT",url:"https://www.samye.be",desc:"Enseignement bouddhiste."},
 {n:"Candlelight — Hans Zimmer",cat:"immersif",d:"2026-12-05",loc:"Anvers",url:"https://feverup.com",desc:"Concert à la bougie. Billets sur Fever."},
 {n:"Tantra Essence — workshop 2 jours",cat:"bienetre",d:"2026-12-05",t:"10:00",loc:"Bruxelles",url:"https://www.eventbrite.com",desc:"Célibataires & couples. Infos & billets sur Eventbrite."},
-{n:"Mons Cœur en Neige",cat:"lumiere",d:"2026-12-06",d2:"2026-12-31",loc:"Mons — Grand-Place",url:"https://visitwallonia.be",desc:"Marché de Noël, chalets, illuminations."},
+{n:"Mons Cœur en Neige",cat:"lumiere",d:"2026-12-05",d2:"2027-01-03",loc:"Mons — Grand-Place, Marché aux Herbes & Place Léopold",url:"https://visitwallonia.be",desc:"Marché de Noël, chalets d'artisans, foraine, patinoire et illuminations sur trois places (officiel : 5 déc → 3 janv). Inclut le Noël des Artisans (5-30 déc)."},
 {n:"⭐ Bains de gongs nocturnes",cat:"bienetre",d:"2026-12-07",t:"20:30-22:00",loc:"Bruxelles — La Tricoterie",adr:"Rue Théodore Verhaegen 158, 1060 Saint-Gilles",url:"https://www.tricoterie.be",star:1,desc:"Voyage sonore vibratoire. Réservation sur le site."},
 {n:"Wintertijd Leuven + Kerstmarkt",cat:"lumiere",d:"2026-12-08",d2:"2027-01-10",loc:"Louvain (marché : 3-20 déc)",url:"https://wintertijdleuven.be",desc:"Hiver féérique, lumières, marché. Programme sur le site."},
 {n:"Candlelight — Michael Jackson tribute",cat:"immersif",d:"2026-12-10",t:"21:00",loc:"Anvers — Zaal AthenA",url:"https://feverup.com",desc:"Concert à la bougie. Billets sur Fever."},
@@ -242,7 +245,10 @@ const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
 const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
 const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
-let fCat="all", fMonth="all", fSoon=false;
+let fCat="all", fMonth="all", fSoon=false, fQ="", fFree=false, fWknd=false, fFav=false;
+let favs=[];try{favs=JSON.parse(localStorage.getItem("favsBE")||"[]")}catch(_){}
+function toggleFav(k){const i=favs.indexOf(k);if(i>=0)favs.splice(i,1);else favs.push(k);try{localStorage.setItem("favsBE",JSON.stringify(favs))}catch(_){};render()}
+function isWeekend(e){const s=pd(e.d),en=endOf(e);const t=new Date(TODAY);const day=t.getDay();const sat=new Date(t);sat.setDate(t.getDate()+((6-day)+7)%7-(day===0?7:0));const sun=new Date(sat);sun.setDate(sat.getDate()+1);return (s<=sat&&en>=sat)||(s<=sun&&en>=sun)}
 const TODAY=new Date(); TODAY.setHours(0,0,0,0);
 const endOf=e=>pd(e.d2||e.d);
 const isOngoing=e=>pd(e.d)<=TODAY&&TODAY<=endOf(e);
@@ -278,6 +284,10 @@ function render(){
   if(fMonth!=="all"){const mS=new Date(2026,+fMonth-1,1),mE=new Date(2026,+fMonth,0);
    if(pd(e.d)>mE||endOf(e)<mS)return false;}
   if(fSoon&&!soon(e))return false;
+  if(fQ){const q=fQ.toLowerCase();if(!(e.n+" "+e.loc+" "+(e.desc||"")).toLowerCase().includes(q))return false}
+  if(fFree&&priceLevel(e)!=="free")return false;
+  if(fWknd&&!isWeekend(e))return false;
+  if(fFav&&!favs.includes(e.n+"|"+e.d))return false;
   return true;
  });
  const ongoing=all.filter(isOngoing).sort((a,b)=>endOf(a)-endOf(b)||a.n.localeCompare(b.n));
@@ -302,6 +312,10 @@ function render(){
    (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">ℹ️ Infos & réservation</a>':'')+
    '<a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">📅 Mon agenda</a>'+
    '<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent("Tourinnes-la-Grosse, 1320 Beauvechain")+'&destination='+encodeURIComponent(e.adr||(e.loc?e.loc.split(" — ").join(", "):"")+(e.border?"":", Belgique"))+'">🗺️ Itinéraire</a></div>';
+  const k=e.n+"|"+e.d;
+  const fb=document.createElement("a");fb.className="btn";fb.href="#";fb.textContent=(favs.includes(k)?"❤️":"🤍")+" Favori";
+  fb.addEventListener("click",ev=>{ev.preventDefault();toggleFav(k)});
+  el.querySelector(".cardrow").appendChild(fb);
   return el;
  }
  if(ongoing.length){
@@ -327,8 +341,12 @@ chips.forEach(([k,l],i)=>{const b=document.createElement("button");b.className="
  b.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");fCat=k;render()};box.appendChild(b)});
 const soonChip=document.createElement("button");soonChip.className="chip";soonChip.textContent="⏳ 7 prochains jours";
 soonChip.onclick=()=>{fSoon=!fSoon;soonChip.classList.toggle("on",fSoon);render()};box.appendChild(soonChip);
+[["🆓 Gratuit",()=>fFree,()=>{fFree=!fFree}],["🎉 Ce week-end",()=>fWknd,()=>{fWknd=!fWknd}],["❤️ Favoris",()=>fFav,()=>{fFav=!fFav}]].forEach(([l,g,cl])=>{
+ const b=document.createElement("button");b.className="chip";b.textContent=l;
+ b.onclick=()=>{cl();b.classList.toggle("on",g());render()};box.appendChild(b)});
 document.querySelectorAll("#months button").forEach(b=>{b.onclick=()=>{
  document.querySelectorAll("#months button").forEach(x=>x.classList.remove("on"));b.classList.add("on");fMonth=b.dataset.m;render()}});
+$("#q").addEventListener("input",ev=>{fQ=ev.target.value.trim();render()});
 $("#shareBtn").addEventListener("click",async ev=>{ev.preventDefault();
  const data={title:"Calendrier Bien-être & Lumière — Belgique",text:"Tous les événements sensoriels, bien-être et spirituels (oct→déc 2026) :",url:location.href};
  if(navigator.share){try{await navigator.share(data)}catch(_){}}
