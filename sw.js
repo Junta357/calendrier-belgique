@@ -1,4 +1,4 @@
-const CACHE = "calendrier-be-v24";
+const CACHE = "calendrier-be-v25";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", e => {

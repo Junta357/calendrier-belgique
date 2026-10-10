@@ -50,6 +50,7 @@ main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
 .b.mid{color:#fbbf24;border-color:#fbbf24}
 .b.high{color:#f9a8d4;border-color:#f9a8d4}
 .b.blue{color:#7dd3fc;border-color:#7dd3fc}
+.b.booked{color:#a5b4fc;border-color:#a5b4fc}
 .b.perm{color:var(--lav,#c4b5fd);border-color:var(--lav,#c4b5fd)}
 .meta{font-size:.78rem;color:var(--dim);line-height:1.5}
 .meta b{color:var(--txt);font-weight:600}
@@ -175,7 +176,7 @@ const E=[
 {n:"⭐ Noël aux Jardins d'Annevoie",cat:"lumiere",d:"2026-11-20",d2:"2026-11-29",loc:"Anhée (Namur)",adr:"Rue des Jardins 37a, 5537 Anhée",price:"~7 €",url:"https://www.annevoie.be",star:1,desc:"Illuminations féériques des jardins d'eau + marché de 50 artisans. Billets sur le site."},
 {n:"Cité de Noël de Malmedy",cat:"lumiere",d:"2026-11-28",d2:"2026-12-28",loc:"Malmedy",url:"https://malmedy-tourisme.be",status:"tba",desc:"Marché, patinoire, crèches illuminées (modèle 2025). Programme sur le site du tourisme."},
 {n:"⭐ Winterland Hasselt",cat:"lumiere",d:"2026-11-13",d2:"2027-01-03",loc:"Hasselt — Kolonel Dusartplein",url:"https://www.winterland.be",star:1,desc:"Marché + attractions + light show chaque heure de 17h à 22h. Infos & tarifs sur le site."},
-{n:"⭐ Putteke Winter — De Ster",cat:"lumiere",d:"2026-11-21",t:"entrée 17:30-21:00",loc:"Sint-Niklaas — domaine De Ster",price:"dès 9 €",url:"https://vlaamsbrabant.be",desc:"Balade nocturne de 3 km « pleine de feu et de lumière ». Billets sur le site de la province."},
+{n:"⭐ Putteke Winter — De Ster",cat:"lumiere",d:"2026-11-21",t:"entrée 17:30-21:00",loc:"Sint-Niklaas — domaine De Ster",price:"dès 9 €",url:"https://vlaamsbrabant.be",desc:"Balade nocturne de 3 km « pleine de feu et de lumière ». ⚠️ Le 21 nov au soir : conflit avec Felix Radu au Théâtre Royal de Mons (agenda perso) — choisir."},
 {n:"Putteke Winter — Halve Maan",cat:"lumiere",d:"2026-11-28",loc:"Diest — domaine Halve Maan",url:"https://vlaamsbrabant.be",status:"tba",desc:"Shows LED, contes, spectacles de feu (clôturé par 150 drones en 2023). Programme à venir sur le site."},
 {n:"Christmas Time — Pairi Daiza",cat:"lumiere",d:"2026-11-29",d2:"2027-01-04",loc:"Brugelette",adr:"Domaine de Cambron, 7940 Brugelette",url:"https://www.pairidaiza.eu",status:"tba",desc:"Illuminations féériques sur 75 ha + train de Noël — et le dôme à papillons Edenya est ouvert ! Dates & billets sur le site."},
 {n:"Atelier « Eveiller la joie »",cat:"esprit",d:"2026-11-23",t:"19:00-20:30",loc:"Etterbeek (Emergences)",price:"5 €",url:"https://emergences.org",desc:"Méditation & joie."},
@@ -245,6 +246,11 @@ const E=[
 {n:"♾️ Hexapoda — l'insectarium de Waremme",cat:"nature",d:"2026-10-10",d2:"2027-12-31",loc:"Waremme (Liège)",adr:"Rue de Grand-Axhe 45E, 4300 Waremme",price:"6 €",url:"https://hexapoda.be",perm:1,desc:"Le musée des insectes de Wallonie (partenaire de l'expo papillons de Liège) : parcours ludique + jardin."},
 {n:"🎬 Met Opera — La Flûte enchantée (Holiday Encore)",cat:"cinema",d:"2026-12-12",d2:"2027-01-02",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"La version féérique des fêtes de Mozart au cinéma — séances dont le mercredi 30 décembre à 12h00. Horaires belges sur pathe.be."},
 {n:"Philip Glass — Extended Music Collective (BOZAR)",cat:"esprit",d:"2026-12-06",t:"11:00",loc:"Bruxelles — BOZAR, Grande salle",adr:"Rue Ravenstein 23, 1000 Bruxelles",url:"https://www.bozar.be",desc:"Matinée contemplative autour de Philip Glass : musique minimaliste en très grand format."},
+{n:"✅ Redouanne Harjane — Je me souviens du futur",cat:"spectacle",d:"2026-11-13",t:"19:00",loc:"Lille — Lille Grand Palais, Salle Louis Pasteur",adr:"1 Boulevard des Cités Unies, 59000 Lille",border:1,booked:1,desc:"Stand-up (déjà réservé et payé — agenda perso). À 1h20 de Tourinnes-la-Grosse."},
+{n:"✅ Felix Radu",cat:"spectacle",d:"2026-11-21",t:"19:00",loc:"Mons — Théâtre Royal, Grand Place",adr:"Grand Place, 7000 Mons",booked:1,desc:"Stand-up (déjà réservé)."},
+{n:"✅ Bernard Werber — V.I.E.",cat:"spectacle",d:"2027-01-23",t:"19:00",loc:"Bruxelles — Cirque Royal",adr:"Rue de l'Enseignement 81, 1000 Bruxelles",booked:1,desc:"Déjà réservé et payé."},
+{n:"✅ Fabien Olicard",cat:"spectacle",d:"2027-03-20",t:"19:00",loc:"Bruxelles — Cirque Royal",adr:"Rue de l'Enseignement 81, 1000 Bruxelles",booked:1,desc:"Mentaliste — déjà réservé et payé."},
+{n:"✅ Expedition 33",cat:"spectacle",d:"2027-03-30",t:"18:00",loc:"(lieu à confirmer)",booked:1,status:"tba",desc:"Déjà réservé (agenda perso)."},
 // ===== 2027 =====
 {n:"🦋 Vrouwenfestival België 2027",cat:"bienetre",d:"2027-08-18",d2:"2027-08-22",loc:"Oud-Heverlee (Brabant wallon !)",url:"https://hipsy.be",status:"tba",star:1,desc:"Festival féminin bien-être à 20 min de Tourinnes-la-Grosse : yoga, cacao, danses, ateliers, nature. Billets & programme via Hipsy."},
 {n:"Ode aan de Yoni — Winter Gathering",cat:"bienetre",d:"2027-01-14",d2:"2027-01-17",loc:"Geetbets (Brabant flamand)",url:"https://hipsy.be",status:"tba",desc:"Rassemblement sacré féminin : cérémonies, tantra, cercles de femmes. Via Hipsy."},
@@ -257,7 +263,7 @@ const E=[
 {n:"Ghent Festival of Flanders",cat:"esprit",d:"2027-09-17",d2:"2027-10-08",loc:"Gand — multiples lieux",url:"https://www.festivalvanvlaanderen.be",status:"tba",desc:"Trois semaines de musique classique et musiques du monde (septembre-octobre)."},
 {n:"⭐ Mons en Lumières",cat:"lumiere",d:"2027-01-27",d2:"2027-01-31",t:"18:00-minuit",loc:"Mons — centre historique",url:"https://www.mons.be",star:1,desc:"4ᵉ édition confirmée : ~3 km de parcours gratuit, 17 installations lumineuses d'artistes."},
 {n:"⭐ Gent Lichtfestival 🇧🇪 (NL)",cat:"lumiere",d:"2027-01-28",d2:"2027-02-01",t:"19:00-minuit",loc:"Gand — centre",price:"GRATUIT",url:"https://lichtfestival.stad.gent",star:1,status:"tba",desc:"7ᵉ édition (tous les 3 ans !) : le plus grand festival lumière de Flandre. Dates exactes fin janvier-début février à confirmer."},
-{n:"🎬 Met Opera — La Fanciulla del West (Puccini)",cat:"cinema",d:"2027-01-23",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"Live in HD, saison des 20 ans — rediffusion mercredi 27 janvier."},
+{n:"🎬 Met Opera — La Fanciulla del West (Puccini)",cat:"cinema",d:"2027-01-23",loc:"Pathé Belgique (cinémas)",url:"https://www.metopera.org",desc:"Live in HD, saison des 20 ans. ⚠️ 23 janv au soir : conflit avec Bernard Werber au Cirque Royal (agenda perso) — voir la rediffusion du mercredi 27 janvier."},
 {n:"⭐ Bright Brussels — Festival of Lights",cat:"lumiere",d:"2027-02-11",d2:"2027-02-14",t:"19:00-23:00",loc:"Bruxelles — centre historique",price:"GRATUIT",url:"https://visit.brussels",star:1,desc:"20+ installations d'artistes belges et internationaux, 4 soirées. Dates 2027 annoncées."},
 {n:"🦋 Réouverture Vlindorado 🇳🇱",cat:"nature",d:"2027-02-14",d2:"2027-11-30",loc:"Waarland (Pays-Bas)",url:"https://www.vlindorado.nl",status:"tba",border:1,desc:"Réouverture de la saison 2027 (mi-février → fin novembre)."},
 {n:"JEMA — Journées Européennes des Métiers d'Art",cat:"salon",d:"2027-04-02",d2:"2027-04-05",loc:"Toute la Belgique — ateliers d'artisans",url:"https://www.journeesdesmetiersdart.fr/europe/belgique-belgium",status:"tba",desc:"Portes ouvertes des ateliers : verrerie, dentelle, joaillerie… (début avril, dates à confirmer)."},
@@ -372,7 +378,7 @@ function render(){
    (e.price&&lvl!=="free"?'<span class="b">'+e.price+'</span>':'')+
    (lvl==="free"?'<span class="b blue">🆓 Gratuit</span>':'<span class="b '+(lvl===1?"free":lvl===2?"mid":"high")+'" title="Fourchette de prix : '+(lvl===1?"pas cher":lvl===2?"prix moyen":"plus cher")+'">💰 '+'€'.repeat(lvl)+'</span>')+
    (e.status==="tba"?'<span class="b tba">⚠️ à confirmer</span>':'')+
-   (e.perm?'<span class="b perm">♾️ permanent</span>':'')+
+   (e.perm?'<span class="b perm">♾️ permanent</span>':'')+(e.booked?'<span class="b booked">✅ Réservé</span>':'')+
    (e.border?'<span class="b">🌍 frontière</span>':'')+
    (isOngoing(e)&&endOf(e)>TODAY?'<span class="b free">jusqu\'au '+short(endOf(e).toISOString().slice(0,10))+'</span>':'');
   el.innerHTML='<img class="cover" src="'+COVERS[e.cat]+'" alt="">'+
