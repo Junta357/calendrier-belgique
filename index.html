@@ -44,6 +44,7 @@ main{max-width:640px;margin:0 auto;padding:14px 14px 90px}
 .b.free{color:var(--mint,#7cf5c8);border-color:var(--mint,#7cf5c8)}
 .b.mid{color:#fbbf24;border-color:#fbbf24}
 .b.high{color:#f9a8d4;border-color:#f9a8d4}
+.b.blue{color:#7dd3fc;border-color:#7dd3fc}
 .b.perm{color:var(--lav,#c4b5fd);border-color:var(--lav,#c4b5fd)}
 .meta{font-size:.78rem;color:var(--dim);line-height:1.5}
 .meta b{color:var(--txt);font-weight:600}
@@ -89,7 +90,7 @@ footer{max-width:640px;margin:0 auto;padding:0 16px 40px;color:var(--dim);font-s
 <footer>
   Dernière mise à jour : <b id="upd"></b><br>
   ✅ confirmé officiellement · ⚠️ à confirmer · ♾️ permanent (toute la période)<br>
-  💰 € pas cher · €€ prix moyen · €€€ plus cher<br>
+  🆓 Gratuit · 💰 € pas cher · €€ prix moyen · €€€ plus cher<br>
   Fait avec 💜 pour la recherche du bien-être
 </footer>
 <div id="toast"></div>
@@ -260,11 +261,13 @@ const PL_TABLE=[
  ["jardin des papillons",2]
 ];
 function priceLevel(e){
- if(e.pl)return e.pl;
+ const FREE_TABLE=["plaisirs d'hiver","village de noël de liège","winter in antwerpen","gentse winterfeesten","wintertijd leuven","mons cœur en neige","winterland hasselt","noël de durbuy","winterlights","trierer weihnachtsmarkt","weihnachtsmarkt düsseldorf","eupener weihnachtsmarkt","weihnachtszauber","village de noël de beauvechain","fééries de noël","marché des créateurs","rouge-cloître","louvain-la-neige","magical maastricht","rando :","nœuds de randonnée"];
  if(e.price){const p=e.price.toLowerCase();
-  if(p.includes("gratuit")||p.includes("libre"))return 1;
-  const m=p.match(/\d+/);if(m){const v=parseInt(m[0]);return v<=8?1:(v<=60?2:3)}}
+  if(p.includes("gratuit")||p.includes("libre"))return "free";
+  const m=p.match(/\d+/);if(m){const v=parseInt(m[0]);return v<=10?1:(v<=60?2:3)}
+  return 2;}
  const k=e.n.toLowerCase();
+ if(FREE_TABLE.some(s=>k.includes(s)))return "free";
  for(const[s,l]of PL_TABLE){if(k.includes(s))return l}
  return 1;
 }
@@ -285,8 +288,8 @@ function render(){
   const lvl=priceLevel(e);
   const el=document.createElement("div");el.className="card";el.style.setProperty("--accent",c.c);
   const badges='<span class="b cat" style="background:'+c.c+'">'+c.i+" "+c.l+'</span>'+
-   (e.price?'<span class="b'+(e.price==="GRATUIT"?" free":"")+'">'+e.price+'</span>':'')+
-   (lvl?'<span class="b '+(lvl===1?"free":lvl===2?"mid":"high")+'" title="Fourchette de prix : '+(lvl===1?"pas cher":lvl===2?"prix moyen":"plus cher")+'">💰 '+'€'.repeat(lvl)+'</span>':'')+
+   (e.price&&lvl!=="free"?'<span class="b">'+e.price+'</span>':'')+
+   (lvl==="free"?'<span class="b blue">🆓 Gratuit</span>':'<span class="b '+(lvl===1?"free":lvl===2?"mid":"high")+'" title="Fourchette de prix : '+(lvl===1?"pas cher":lvl===2?"prix moyen":"plus cher")+'">💰 '+'€'.repeat(lvl)+'</span>')+
    (e.status==="tba"?'<span class="b tba">⚠️ à confirmer</span>':'')+
    (e.perm?'<span class="b perm">♾️ permanent</span>':'')+
    (e.border?'<span class="b">🌍 frontière</span>':'')+
