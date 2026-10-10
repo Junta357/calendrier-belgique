@@ -179,6 +179,7 @@ const E=[
 {n:"Marché des Créateurs « Noël créatif » — Corroy-le-Château",cat:"salon",d:"2026-11-14",d2:"2026-11-15",t:"~11:00-18:00",loc:"Chaumont-Gistoux — Ferme du Château de Corroy-le-Château",url:"https://www.wawamagazine.com",status:"tba",desc:"À 5 min de Taurine ! Marché de créateurs et artisans dans la ferme du château (édition 2025 : 15-16 nov — dates 2026 à confirmer sur wawa/commune)."},
 {n:"Fééries de Noël de La Hulpe",cat:"lumiere",d:"2026-12-11",d2:"2026-12-13",t:"dès 18:00 le vendredi",loc:"La Hulpe — place communale",url:"https://www.lahulpe.be",status:"tba",desc:"Village de Noël, show LED, concerts gospel, crèche (édition 2025 : 12-14 déc). À 15 min de Taurine. Programme sur le site de la commune."},
 {n:"Noël à Villers — Abbaye de Villers-la-Ville",cat:"lumiere",d:"2026-12-05",d2:"2026-12-13",loc:"Villers-la-Ville — abbaye cistercienne",url:"https://villers.be",status:"tba",desc:"Marché de Noël dans les ruines gothiques de l'abbaye, embrasements et ambiance médiévale (dates 2026 à confirmer sur villers.be). À 20 min de Taurine."},
+{n:"Village de Noël de Beauvechain",cat:"lumiere",d:"2026-12-12",d2:"2027-01-04",t:"17:00-21:00",loc:"Beauvechain — place communale",url:"https://www.beauvechain.be",status:"tba",desc:"À Tourinnes-la-Grosse même ! Village de Noël sur la place : chalets, animations, atmosphère villageoise (modèle 2025 : 13-14 & 19 déc → 4 janv). Dates 2026 à confirmer sur beauvechain.be."},
 // ===== DÉCEMBRE =====
 {n:"⭐ Winter in Antwerpen",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Anvers — centre historique",url:"https://www.antwerpen.be",star:1,desc:"Marché, illuminations, concerts, gastronomie. Programme sur le site de la ville."},
 {n:"Gentse Winterfeesten",cat:"lumiere",d:"2026-12-03",d2:"2027-01-03",loc:"Gand",url:"https://visit.gent.be",desc:"Marché + grande roue Saint-Pierre. Infos sur le site."},
@@ -272,7 +273,7 @@ function render(){
    '<div class="cardrow">'+
    (e.url?'<a class="btn" target="_blank" rel="noopener" href="'+e.url+'">ℹ️ Infos & réservation</a>':'')+
    '<a class="btn" target="_blank" rel="noopener" href="'+gcal(e)+'">📅 Mon agenda</a>'+
-   '<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent("Taurine, 1325 Chaumont-Gistoux")+'&destination='+encodeURIComponent((e.loc||"Belgique")+", Belgique")+'">🗺️ Itinéraire</a></div>';
+   '<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent("Tourinnes-la-Grosse, 1320 Beauvechain")+'&destination='+encodeURIComponent((e.loc||"Belgique")+", Belgique")+'">🗺️ Itinéraire</a></div>';
   return el;
  }
  if(ongoing.length){
