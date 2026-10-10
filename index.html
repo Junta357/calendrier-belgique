@@ -204,6 +204,7 @@ const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","
 const DFR=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 const pd=s=>{const[y,m,d]=s.split("-");return new Date(+y,+m-1,+d)};
 const short=s=>{const x=pd(s);return x.getDate()+" "+MOIS[x.getMonth()].slice(0,4)+"."};
+const fmt=s=>{const x=pd(s);return DFR[x.getDay()]+" "+x.getDate()+" "+MOIS[x.getMonth()]};
 let fCat="all", fMonth="11", fSoon=false;
 function gcal(e){const st=pd(e.d);const en=e.d2?pd(e.d2):new Date(st.getTime()+864e5);
  const f=x=>x.toISOString().slice(0,10).replace(/-/g,"");
