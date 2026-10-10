@@ -99,7 +99,8 @@ const CATS={
  salon:{l:"🛍️ Salon",c:"#7dd3fc",i:"🛍️"},
  esprit:{l:"🧠 Esprit & Sciences",c:"#f9a8d4",i:"🧠"},
  spectacle:{l:"🎪 Spectacle",c:"#fdba74",i:"🎪"},
- nature:{l:"🌿 Nature & Rando",c:"#86efac",i:"🌿"}
+ nature:{l:"🌿 Nature & Rando",c:"#86efac",i:"🌿"},
+ cinema:{l:"🎬 Cinéma & Opéra",c:"#f472b6",i:"🎬"}
 };
 const E=[
 // ===== OCTOBRE =====
@@ -194,6 +195,11 @@ const E=[
 {n:"Christmas Magic — Grottes de Han",cat:"lumiere",d:"2026-12-21",d2:"2027-01-05",loc:"Han-sur-Lesse",url:"https://grotte-de-han.be",status:"tba",desc:"Domaine décoré + visites hivernales des grottes (TBA). Programme sur le site."},
 {n:"Christmas Garden Köln 🇩🇪",cat:"lumiere",d:"2026-11-20",d2:"2027-01-10",loc:"Cologne — Zoo",url:"https://www.christmas-garden.de",status:"tba",border:1,desc:"Parcours lumineux féérique (dates 2026 TBA). Billets sur le site."},
 {n:"Weihnachtszauber Sankt Vith 🇧🇪 (DE)",cat:"lumiere",d:"2026-12-13",d2:"2026-12-14",loc:"Saint-Vith (Ostbelgien)",url:"https://www.ostbelgien.eu",status:"tba",desc:"Magie de Noël germanophone (dates TBA)."},
+{n:"🎬 Met Opera Live — Macbeth (Verdi)",cat:"cinema",d:"2026-10-17",loc:"Pathé Belgique (cinémas)",url:"https://www.pathelive.com",desc:"Diffusion internationale du Met Live in HD, saison 2026-27. Vérifier les séances belges et réserver sur pathe.be (programme publié chaque lundi soir)."},
+{n:"🎬 Met Opera Live — Carmen (Bizet)",cat:"cinema",d:"2026-11-14",loc:"Pathé Belgique (cinémas)",url:"https://www.pathelive.com",desc:"Diffusion internationale du Met Live in HD. Un grand spectacle émotionnel sur écran géant."},
+{n:"🎬 Met Opera Live — Samson et Dalila (Saint-Saëns)",cat:"cinema",d:"2026-12-05",loc:"Pathé Belgique (cinémas)",url:"https://www.pathelive.com",desc:"Diffusion internationale du Met Live in HD."},
+{n:"🎬 Royal Opera House — Casse-Noisette",cat:"cinema",d:"2026-12-15",d2:"2027-01-05",loc:"Pathé Belgique (cinémas)",url:"https://www.rbo.org.uk",status:"tba",desc:"Le ballet de Noël de la saison ROH 2026-27, diffusé au cinéma (dates belges à confirmer sur pathe.be)."},
+{n:"♾️ Pathé Live — opéras, ballets & spectacles au cinéma",cat:"cinema",d:"2026-10-10",d2:"2026-12-31",loc:"Pathé Belgique",url:"https://www.pathelive.com",perm:1,desc:"Opéras, ballets, concerts et documentaires événementiels diffusés dans ton Pathé. Nouveau programme chaque lundi soir sur pathe.be/evenements."},
 // ===== RANDOS 7-25 KM (toute la période) =====
 {n:"♾️ Rando : Vallon du Ninglinspo",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7-12 km",loc:"Aywaille (Ardenne)",url:"https://www.gael.be",perm:1,desc:"Le seul « torrent » de Belgique : ruisseaux, cascades, rochers. Itinéraires détaillés sur Gael.be."},
 {n:"♾️ Rando : la Hoëgne",cat:"nature",d:"2026-10-10",d2:"2026-12-31",t:"7,5-14 km",loc:"Jalhay / Cokaifagne (Hautes Fagnes)",url:"https://visitwallonia.be",perm:1,desc:"Ruisseau romantique et sauvage né dans les fagnes, ponts de rondins, fagne de Malchamps. Fiche balade sur VisitWallonia."},
@@ -245,7 +251,7 @@ function render(){
   list.appendChild(card);
  });
 }
-const chips=[["all","Tout"],["lumiere","💡 Lumière"],["immersif","🎭 Immersif"],["bienetre","🧘 Bien-être"],["bouddhisme","☸️ Bouddhisme"],["salon","🛍️ Salons"],["esprit","🧠 Esprit & Sciences"],["spectacle","🎪 Spectacles"],["nature","🌿 Nature & Rando"]];
+const chips=[["all","Tout"],["lumiere","💡 Lumière"],["immersif","🎭 Immersif"],["bienetre","🧘 Bien-être"],["bouddhisme","☸️ Bouddhisme"],["salon","🛍️ Salons"],["esprit","🧠 Esprit & Sciences"],["spectacle","🎪 Spectacles"],["nature","🌿 Nature & Rando"],["cinema","🎬 Cinéma & Opéra"]];
 const box=$("#chips");
 chips.forEach(([k,l],i)=>{const b=document.createElement("button");b.className="chip"+(i===0?" on":"");b.textContent=l;
  b.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");fCat=k;render()};box.appendChild(b)});
